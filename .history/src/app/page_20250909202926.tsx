@@ -225,7 +225,7 @@ export default function WenoveLanding() {
               </CardContent>
             </Card>
 
-            <Card className="group bg-transparent border-4 border-[#ffcc00] rounded-lg transition-colors duration-300 hover:bg-[#ffcc00]">
+            <Card className="bg-transparent border-4 border-[#ffcc00] rounded-lg transition-colors duration-300 hover:bg-[#ffcc00]">
               
               <CardContent className="p-6 text-center">
                 <div className="w-16 h-16 bg-transparent rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -236,7 +236,7 @@ export default function WenoveLanding() {
                 style={{ fontFamily: "Futura, sans-serif" }}
                 >TRANSFORME</h3>
                 
-                <p className="text-[#ffffff] font-dosis font-bold text-m leading-relaxed">
+                <p className="text-[#ffffff] text-sm leading-relaxed">
                   Mude sua no consumo — e ajude a reduzir o desperdício.
                 </p>
               </CardContent>

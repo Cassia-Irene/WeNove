@@ -225,18 +225,16 @@ export default function WenoveLanding() {
               </CardContent>
             </Card>
 
-            <Card className="group bg-transparent border-4 border-[#ffcc00] rounded-lg transition-colors duration-300 hover:bg-[#ffcc00]">
+            <Card className="bg-transparent border-4 border-[#ffcc00] rounded-lg transition-colors duration-300 hover:bg-[#ffcc00]">
               
               <CardContent className="p-6 text-center">
                 <div className="w-16 h-16 bg-transparent rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <RotateCcw className="w-12 h-12 text-[#ffcc00] group-hover:text-[#FFFFFF] transition-colors duration-300" />
+                  <RotateCcw className="w-8 h-8 text-[#ffcc00]" />
                 </div>
                 
-                <h3 className="text-2xl text-[#ffffff] mb-3"
-                style={{ fontFamily: "Futura, sans-serif" }}
-                >TRANSFORME</h3>
+                <h3 className="text-xl font-bold text-[#ffffff] mb-3">TRANSFORME</h3>
                 
-                <p className="text-[#ffffff] font-dosis font-bold text-m leading-relaxed">
+                <p className="text-[#ffffff] text-sm leading-relaxed">
                   Mude sua no consumo — e ajude a reduzir o desperdício.
                 </p>
               </CardContent>

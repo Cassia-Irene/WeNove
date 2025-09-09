@@ -225,7 +225,7 @@ export default function WenoveLanding() {
               </CardContent>
             </Card>
 
-            <Card className="group bg-transparent border-4 border-[#ffcc00] rounded-lg transition-colors duration-300 hover:bg-[#ffcc00]">
+            <Card className="bg-transparent border-4 border-[#ffcc00] rounded-lg transition-colors duration-300 hover:bg-[#ffcc00]">
               
               <CardContent className="p-6 text-center">
                 <div className="w-16 h-16 bg-transparent rounded-lg flex items-center justify-center mx-auto mb-4">
