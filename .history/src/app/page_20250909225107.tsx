@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Package, Scissors, RefreshCw, Recycle, Search, Users, RotateCcw } from "lucide-react"
 import HeroSection from "@/components/HeroSection";
-import Link from "next/link";
 
 export default function WenoveLanding() {
 
@@ -30,10 +29,10 @@ export default function WenoveLanding() {
 
       {/* Navegação */}
       <nav className="relative flex items-center gap-10 text-white">
-        <Link href="/" className="hover:text-[#ffcc00] transition-colors">Início</Link>
-        <Link href="/sobre-nos" className="hover:text-[#ffcc00] transition-colors">Sobre nós</Link>
-        <Link href="/produtos" className="hover:text-[#ffcc00] transition-colors">Produtos</Link>
-        <Link href="/contato" className="hover:text-[#ffcc00] transition-colors">Contato</Link>
+        <a href="" className="hover:text-[#ffcc00] transition-colors">Início</a>
+        <a href="#" className="hover:text-[#ffcc00] transition-colors">Sobre nós</a>
+        <a href="#" className="hover:text-[#ffcc00] transition-colors">Produtos</a>
+        <a href="#" className="hover:text-[#ffcc00] transition-colors">Contato</a>
       </nav>
     </div>
 

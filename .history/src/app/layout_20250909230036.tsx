@@ -29,7 +29,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
-        <link rel="icon" href="/Logo-wenove.svg" />
+        <link rel="icon" href="/" />
 
       </head>
 

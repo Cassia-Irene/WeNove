@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "WeNove",
+  
 };
 
 export default function RootLayout({
@@ -28,9 +29,6 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
-
-        <link rel="icon" href="/Logo-wenove.svg" />
-
       </head>
 
 

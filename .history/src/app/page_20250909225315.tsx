@@ -31,9 +31,9 @@ export default function WenoveLanding() {
       {/* Navegação */}
       <nav className="relative flex items-center gap-10 text-white">
         <Link href="/" className="hover:text-[#ffcc00] transition-colors">Início</Link>
-        <Link href="/sobre-nos" className="hover:text-[#ffcc00] transition-colors">Sobre nós</Link>
-        <Link href="/produtos" className="hover:text-[#ffcc00] transition-colors">Produtos</Link>
-        <Link href="/contato" className="hover:text-[#ffcc00] transition-colors">Contato</Link>
+  <Link href="/sobre-nos" className="hover:text-[#ffcc00] transition-colors">Sobre nós</Link>
+  <Link href="/produtos" className="hover:text-[#ffcc00] transition-colors">Produtos</Link>
+  <Link href="/contato" className="hover:text-[#ffcc00] transition-colors">Contato</Link>
       </nav>
     </div>
 
