@@ -386,7 +386,7 @@ export default function WenoveLanding() {
 
             <div>
               
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Para você</h4>
+              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-4 text-center">Para você</h4>
               
               <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
               

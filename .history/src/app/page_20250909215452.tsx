@@ -89,7 +89,7 @@ export default function WenoveLanding() {
                 >COLETA</h3>
                 
                 <p className="text-[#993F3C] font-dosis text-m leading-relaxed transition-colors duration-300 group-hover:text-white">
-                  Agenda a coleta de suas roupas usadas de forma rápida e prática.
+                  Agenda coleta de suas roupas usadas de forma rápida e prática.
                 </p>
               </CardContent>
             </Card>
@@ -239,7 +239,7 @@ export default function WenoveLanding() {
                 >TRANSFORME</h3>
                 
                 <p className="text-[#ffffff] font-dosis font-bold text-m leading-relaxed">
-                  Venda, doe ou compre — e ajude a reduzir o desperdício.
+                  Mude sua no consumo — e ajude a reduzir o desperdício.
                 </p>
               </CardContent>
             </Card>
@@ -339,45 +339,41 @@ export default function WenoveLanding() {
 
               <p className="text-[#ffffff] font-dosis text-m text-center mb-6 mx-auto max-w-[200px]">© 2025 WeNove. Todos direitos reservados.</p>
               
-              <div className=" group flex gap-4 justify-center">
-                <div className="w-10 h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-zap.svg" alt="Facebook" className="w-6 h-6" />
+              <div className="flex gap-4 justify-center">
+                <div className="w-8 h-8 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center">
+                  <img src="/footer-zap.svg" alt="Facebook" className="" />
                 </div>
 
-                <div className="w-10 h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-email.svg" alt="Email" className="w-5 h-5" />
+                <div className="w-8 h-8 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center">
+                  <img src="/footer-email.svg" alt="Facebook" className="" />
                 </div>
 
-                <div className="w-10 h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-instagram.svg" alt="Instagram" className="w-7 h-7" />
+                <div className="w-8 h-8 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center">
+                  <span className="text-[#ffffff] text-sm">in</span>
                 </div>
               </div>
             </div>
 
             <div>
-
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Navegue</h4>
-
-              <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
-              
-              <ul className="space-y-2 text-center">
+              <h4 className="text-[#ffffff] font-bold mb-4">Navegue</h4>
+              <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Início
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Sobre nós
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Produtos
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Contato
                   </a>
                 </li>
@@ -385,19 +381,15 @@ export default function WenoveLanding() {
             </div>
 
             <div>
-              
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Para você</h4>
-              
-              <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
-              
-              <ul className="space-y-2 text-center">
+              <h4 className="text-[#ffffff] font-bold mb-4">Para você</h4>
+              <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Quero comprar roupas
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
                   </a>
                 </li>

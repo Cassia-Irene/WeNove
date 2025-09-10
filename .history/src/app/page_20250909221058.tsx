@@ -355,11 +355,7 @@ export default function WenoveLanding() {
             </div>
 
             <div>
-
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Navegue</h4>
-
-              <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
-              
+              <h4 className="text-[#ffffff] font-dosis font-bold mb-4 text-center">Navegue</h4>
               <ul className="space-y-2 text-center">
                 <li>
                   <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
@@ -385,11 +381,7 @@ export default function WenoveLanding() {
             </div>
 
             <div>
-              
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Para você</h4>
-              
-              <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
-              
+              <h4 className="text-[#ffffff] font-dosis font-bold mb-4 text-center">Para você</h4>
               <ul className="space-y-2 text-center">
                 <li>
                   <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">

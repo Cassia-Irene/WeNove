@@ -40,7 +40,7 @@ export default function WenoveLanding() {
     <div>
       <Button className="
       absolute top-[30px] right-[30px]
-      w-[150px] h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59]
+      w-[150px] h-[50px] bg-[#FFCC00] hover:bg-[#e5dc3c]
       text-[#0C3729] font-dosis font-semibold text-[20px]
       rounded-full flex items-center justify-center
       shadow-[0_4px_4px_rgba(0,0,0,0.25)]
@@ -89,7 +89,7 @@ export default function WenoveLanding() {
                 >COLETA</h3>
                 
                 <p className="text-[#993F3C] font-dosis text-m leading-relaxed transition-colors duration-300 group-hover:text-white">
-                  Agenda a coleta de suas roupas usadas de forma rápida e prática.
+                  Agenda coleta de suas roupas usadas de forma rápida e prática.
                 </p>
               </CardContent>
             </Card>
@@ -239,7 +239,7 @@ export default function WenoveLanding() {
                 >TRANSFORME</h3>
                 
                 <p className="text-[#ffffff] font-dosis font-bold text-m leading-relaxed">
-                  Venda, doe ou compre — e ajude a reduzir o desperdício.
+                  Mude sua no consumo — e ajude a reduzir o desperdício.
                 </p>
               </CardContent>
             </Card>
@@ -249,12 +249,11 @@ export default function WenoveLanding() {
 
       {/* Section Escolher */}
       
-      <section className="py-25 px-6 bg-[#efe8db] mb-40"
-      style={{boxShadow: '0 -1px 4px 0 rgba(0,0,0,0.25), 0 1px 4px 0 rgba(0,0,0,0.25)'}}>
+      <section className="py-16 px-6 bg-[#efe8db] mb-40">
         
         <div className="max-w-6xl mx-auto">
           
-          <h2 className="text-3xl md:text-6xl text-[#8f3332] text-center mb-20"
+          <h2 className="text-3xl md:text-6xl text-[#8f3332] text-center mb-12"
           style={{ fontFamily: "Futura, sans-serif" }}>
             Por que escolher a Wenove?
           </h2>
@@ -272,7 +271,7 @@ export default function WenoveLanding() {
               style={{ fontFamily: "Futura, sans-serif" }}
               >Consumo inteligente</h3>
               
-              <p className="text-[#88A51D] font-dosis font-semibold text-m leading-relaxed text-center mx-auto max-w-[220px]">Moda que faz sentido para você e para o planeta.</p>
+              <p className="text-[#88A51D] font-dosis font-semibold text-m leading-relaxed">Moda que faz sentido para você e para o planeta.</p>
             </div>
 
             <div className="text-center">
@@ -286,36 +285,24 @@ export default function WenoveLanding() {
               style={{ fontFamily: "Futura, sans-serif" }}
               >Sustentabilidade real</h3>
               
-              <p className="text-[#88A51D] font-dosis font-semibold text-m leading-relaxed text-center mx-auto max-w-[220px]">Menos descarte, mais responsabilidade.</p>
+              <p className="text-[#88A51D] font-dosis text-sm leading-relaxed">Menos descarte, mais responsabilidade.</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#395C3E] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-[#ffffff] text-4xl"
-                style={{ fontFamily: "Futura, sans-serif" }}
-                >3</span>
+              <div className="w-16 h-16 bg-[#88a51d] rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-[#ffffff] font-bold text-2xl">3</span>
               </div>
-              
-              <h3 className="text-2xl text-[#88a51d] mb-3"
-              style={{ fontFamily: "Futura, sans-serif" }}
-              >Conexões que importam</h3>
-              
-              <p className="text-[#88A51D] font-dosis font-semibold text-m leading-relaxed text-center mx-auto max-w-[220px]">Pessoas, marcas e empreendedores juntos.</p>
+              <h3 className="text-xl font-bold text-[#88a51d] mb-3">Conexões que importam</h3>
+              <p className="text-[#3b2d24] text-sm leading-relaxed">Pessoas, marcas e empreendedores juntos.</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#395C3E] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-[#ffffff] text-4xl"
-                style={{ fontFamily: "Futura, sans-serif" }}
-                >4</span>
+              <div className="w-16 h-16 bg-[#88a51d] rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-[#ffffff] font-bold text-2xl">4</span>
               </div>
-              
-              <h3 className="text-2xl text-[#88a51d] mb-3"
-              style={{ fontFamily: "Futura, sans-serif" }}
-              >Impacto positivo</h3>
-              
-              <p className="text-[#88a51d] font-dosis font-semibold text-m leading-relaxed text-center mx-auto max-w-[220px]">
-                Cada peça tem um novo propósito e reduz o lixo têxtil.
+              <h3 className="text-xl font-bold text-[#88a51d] mb-3">Impacto positivo</h3>
+              <p className="text-[#3b2d24] text-sm leading-relaxed">
+                Cada peça tem uma nova proposta e muda o fim final.
               </p>
             </div>
           </div>
@@ -324,60 +311,49 @@ export default function WenoveLanding() {
 
       {/* Footer */}
       <footer className="py-12 px-6 bg-[#0c3729]">
-        
         <div className="max-w-6xl mx-auto">
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
             <div>
-              {/* Logo */}
-              <img
-                src="/Logo-footer.svg"
-                alt="Wenove Logo"
-                className="mb-6 justify-center mx-auto"
-              />
-
-              <p className="text-[#ffffff] font-dosis text-m text-center mb-6 mx-auto max-w-[200px]">© 2025 WeNove. Todos direitos reservados.</p>
-              
-              <div className=" group flex gap-4 justify-center">
-                <div className="w-10 h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-zap.svg" alt="Facebook" className="w-6 h-6" />
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-[#ffffff] rounded-full flex items-center justify-center">
+                  <span className="text-[#0c3729] font-bold text-sm">W</span>
                 </div>
-
-                <div className="w-10 h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-email.svg" alt="Email" className="w-5 h-5" />
+                <span className="text-[#ffffff] font-bold text-xl">Wenove</span>
+              </div>
+              <p className="text-[#ffffff] text-sm mb-4">Conectando pessoas através da moda sustentável.</p>
+              <div className="flex gap-4">
+                <div className="w-8 h-8 bg-[#ffffff] bg-opacity-20 rounded-full flex items-center justify-center">
+                  <span className="text-[#ffffff] text-sm">f</span>
                 </div>
-
-                <div className="w-10 h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-instagram.svg" alt="Instagram" className="w-7 h-7" />
+                <div className="w-8 h-8 bg-[#ffffff] bg-opacity-20 rounded-full flex items-center justify-center">
+                  <span className="text-[#ffffff] text-sm">@</span>
+                </div>
+                <div className="w-8 h-8 bg-[#ffffff] bg-opacity-20 rounded-full flex items-center justify-center">
+                  <span className="text-[#ffffff] text-sm">in</span>
                 </div>
               </div>
             </div>
 
             <div>
-
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Navegue</h4>
-
-              <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
-              
-              <ul className="space-y-2 text-center">
+              <h4 className="text-[#ffffff] font-bold mb-4">Navegue</h4>
+              <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Início
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Sobre nós
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Produtos
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Contato
                   </a>
                 </li>
@@ -385,19 +361,15 @@ export default function WenoveLanding() {
             </div>
 
             <div>
-              
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Para você</h4>
-              
-              <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
-              
-              <ul className="space-y-2 text-center">
+              <h4 className="text-[#ffffff] font-bold mb-4">Para você</h4>
+              <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Quero comprar roupas
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
                   </a>
                 </li>

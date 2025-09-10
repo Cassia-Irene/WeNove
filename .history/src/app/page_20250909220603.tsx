@@ -89,7 +89,7 @@ export default function WenoveLanding() {
                 >COLETA</h3>
                 
                 <p className="text-[#993F3C] font-dosis text-m leading-relaxed transition-colors duration-300 group-hover:text-white">
-                  Agenda a coleta de suas roupas usadas de forma rápida e prática.
+                  Agenda coleta de suas roupas usadas de forma rápida e prática.
                 </p>
               </CardContent>
             </Card>
@@ -239,7 +239,7 @@ export default function WenoveLanding() {
                 >TRANSFORME</h3>
                 
                 <p className="text-[#ffffff] font-dosis font-bold text-m leading-relaxed">
-                  Venda, doe ou compre — e ajude a reduzir o desperdício.
+                  Mude sua no consumo — e ajude a reduzir o desperdício.
                 </p>
               </CardContent>
             </Card>
@@ -355,11 +355,7 @@ export default function WenoveLanding() {
             </div>
 
             <div>
-
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Navegue</h4>
-
-              <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
-              
+              <h4 className="text-[#ffffff] font-dosis font-bold mb-4 text-center">Navegue</h4>
               <ul className="space-y-2 text-center">
                 <li>
                   <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
@@ -367,17 +363,17 @@ export default function WenoveLanding() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Sobre nós
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Produtos
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Contato
                   </a>
                 </li>
@@ -385,19 +381,15 @@ export default function WenoveLanding() {
             </div>
 
             <div>
-              
-              <h4 className="text-[#ffffff] font-dosis text-lg font-bold mb-2 text-center">Para você</h4>
-              
-              <div className="w-[200px] h-[1px] bg-[#EFE8DB] mx-auto mb-2" />
-              
+              <h4 className="text-[#ffffff] font-dosis font-bold mb-4 text-center">Para você</h4>
               <ul className="space-y-2 text-center">
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Quero comprar roupas
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] text-sm hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
                   </a>
                 </li>
