@@ -217,6 +217,72 @@ export default function ProdutosPage() {
           </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-[#0c3729] text-white mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Logo and Description */}
+            <div>
+              <img src="/wenove-logo-white.jpg" alt="WeNove" className="h-8 mb-4" />
+              <p className="text-sm text-gray-300 mb-4">
+                © 2025 WeNove. Todos
+                <br />
+                direitos reservados
+              </p>
+              <div className="flex space-x-4">
+                <div className="w-8 h-8 bg-gray-600 rounded-full"></div>
+                <div className="w-8 h-8 bg-gray-600 rounded-full"></div>
+                <div className="w-8 h-8 bg-gray-600 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Navegue</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-gray-300 hover:text-white">
+                    Início
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-300 hover:text-white">
+                    Sobre nós
+                  </a>
+                </li>
+                <li>
+                  <a href="/produtos" className="text-gray-300 hover:text-white">
+                    Produtos
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-300 hover:text-white">
+                    Contato
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* User Actions */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Para você</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-gray-300 hover:text-white">
+                    Quero comprar roupas
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-300 hover:text-white">
+                    Quero vender roupas
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
