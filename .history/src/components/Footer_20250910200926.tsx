@@ -59,7 +59,7 @@ export default function Footer() {
                 <li>
                   <Link href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
                     Contato
-                  </Link>
+                  </Linl>
                 </li>
               </ul>
             </div>
@@ -72,14 +72,14 @@ export default function Footer() {
               
               <ul className="space-y-2 text-center">
                 <li>
-                  <Link href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
                     Quero comprar roupas
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

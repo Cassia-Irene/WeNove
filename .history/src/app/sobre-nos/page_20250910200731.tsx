@@ -8,7 +8,7 @@ export default function Sobre_nos_Page() {
     <div className="min-h-screen bg-[#FFF]">
       
       {/* Header */}
-      <HeaderProduto />
+      <Header_Produto />
     {/* Footer */}
         <Footer />
     </div>

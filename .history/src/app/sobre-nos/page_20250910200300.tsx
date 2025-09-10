@@ -1,4 +1,4 @@
-import HeaderProduto from "@/components/HeaderProduto"
+import Header_Produto from "@/components/Header-produto"
 import Footer from "@/components/Footer"
 
 
@@ -8,7 +8,7 @@ export default function Sobre_nos_Page() {
     <div className="min-h-screen bg-[#FFF]">
       
       {/* Header */}
-      <HeaderProduto />
+      <Header_Produto />
     {/* Footer */}
         <Footer />
     </div>

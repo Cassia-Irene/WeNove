@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Search, ShoppingCart, User } from "lucide-react"
-import HeaderProduto from "@/components/HeaderProduto"
+import Header_Produto from "@/components/HeaderProduto"
 
 
 export default function ProdutosPage() {
@@ -89,7 +89,7 @@ export default function ProdutosPage() {
     <div className="min-h-screen bg-[#FFF]">
       
       {/* Header */}
-      <HeaderProduto />
+      <Header_Produto />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

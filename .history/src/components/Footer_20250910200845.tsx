@@ -47,9 +47,9 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sobre-nos" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <Link href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
                     Sobre nós
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <Link href="/produtos" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
@@ -57,9 +57,9 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
                     Contato
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -72,14 +72,14 @@ export default function Footer() {
               
               <ul className="space-y-2 text-center">
                 <li>
-                  <Link href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] font-dosis text-m hover:text-[#ffcc00] transition-colors">
                     Quero comprar roupas
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

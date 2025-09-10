@@ -77,9 +77,9 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
+                  <a href="#" className="text-[#ffffff] font-dosis text-s hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
