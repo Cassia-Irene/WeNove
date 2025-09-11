@@ -1,4 +1,7 @@
 import HeaderProduto from "@/components/HeaderProduto"
+import Footer from "@/components/Footer"
+
+
 export default function Sobre_nos_Page() {
 
   return (

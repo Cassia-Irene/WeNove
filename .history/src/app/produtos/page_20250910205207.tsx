@@ -176,7 +176,7 @@ export default function ProdutosPage() {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-center space-x-8 mt-20 mb-20">
+        <div className="flex items-center justify-center space-x-8 mt-20 mb">
           <Button
             variant="outline"
             className="border-[#88a51d] text-[#88a51d] hover:bg-[#88a51d] hover:text-white bg-transparent"
