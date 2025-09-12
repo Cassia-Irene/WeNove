@@ -88,7 +88,7 @@ export default function Footer() {
                 </li>
                 
                 <li>
-                  <Link href="/Cadastro-Produto" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
+                  <Link href="/c" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
                   </Link>
                 </li>
