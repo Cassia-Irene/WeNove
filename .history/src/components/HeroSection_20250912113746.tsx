@@ -44,7 +44,7 @@ export default function HeroSection() {
       {/* Texto fixo no centro */}
       <div className="absolute z-20 px-6 sm:px-6 lg:px-8 max-w-8xl text-center -translate-y-10">
         <h1
-          className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-[90px] text-white mb-5 sm:mb-6 leading-tight text-balance"
+          className="text-4xl sm:text-4xl md:text-6xl lg:text-5xl xl:text-[90px] text-white mb-5 sm:mb-6 leading-tight text-balance"
           style={{ fontFamily: "Futura, sans-serif" }}
         >
           Renovar é mais do que vestir diferente.

@@ -47,7 +47,8 @@ export default function HeroSection() {
           className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-[90px] text-white mb-5 sm:mb-6 leading-tight text-balance"
           style={{ fontFamily: "Futura, sans-serif" }}
         >
-          Renovar é mais do que vestir diferente.
+          Renovar é mais do que vestir diferente. 
+         
             
           <span className="text-[#ffcc00]"> É pensar diferente.</span>
         </h1>
