@@ -18,7 +18,7 @@ export default function ProdutosPage() {
       price: "R$ 45,00",
       image: "/produto1.png",
       seller: "Ana Luna",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/woman-profile.png",
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ export default function ProdutosPage() {
       price: "R$ 35,00",
       image: "/produto2.png",
       seller: "Lucas Ferreira",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/man-profile.png",
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ export default function ProdutosPage() {
       price: "R$ 109,00",
       image: "/produto3.png",
       seller: "Rafael Almeida",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/man-profile.png",
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ export default function ProdutosPage() {
       price: "R$ 89,00",
       image: "/produto4.png",
       seller: "Thais Santos",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/woman-profile.png",
     },
     {
       id: 5,
@@ -50,7 +50,7 @@ export default function ProdutosPage() {
       price: "R$ 89,90",
       image: "/produto5.png",
       seller: "Camila Rocha",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/woman-profile.png",
     },
     {
       id: 6,
@@ -58,7 +58,7 @@ export default function ProdutosPage() {
       price: "R$ 109,90",
       image: "/produto6.png",
       seller: "Marina Oliveira",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/woman-profile.png",
     },
     {
       id: 7,
@@ -66,7 +66,7 @@ export default function ProdutosPage() {
       price: "R$ 60,00",
       image: "/produto7.png",
       seller: "Luis Martins",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/man-profile.png",
     },
     {
       id: 8,
@@ -74,7 +74,7 @@ export default function ProdutosPage() {
       price: "R$ 108,90",
       image: "/produto8.png",
       seller: "Ricardo Almeida",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/man-profile.png",
     },
   ]
 
@@ -91,8 +91,11 @@ export default function ProdutosPage() {
       {/* Header */}
       <HeaderProduto />
 
-      {/* Page Header */}
-        <div className="py-15 text-center mt-10 mb-20 bg-[#efe8db]"
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+        
+        {/* Page Header */}
+        <div className="w-screen max-w-6xl py-15 text-center mb-20 bg-[#efe8db]"
         style={{boxShadow: '0 -1px 4px 0 rgba(0,0,0,0.25), 0 1px 4px 0 rgba(0,0,0,0.25)'}}
         >
 
@@ -106,22 +109,18 @@ export default function ProdutosPage() {
           </p>
 
           {/* Barra de Busca */}
-          <div className="max-w-xs sm:max-w-md mx-auto relative">
-            <Search className="absolute left-3 xl:left-20 top-1/2 transform -translate-y-1/2 text-[#FFF] h-4 w-4 sm:h-5 sm:w-5 sm:h-6 sm:w-6 " />
-            
+          <div className="max-w-md mx-auto relative">
+            <Search className="absolute left-20 top-1/2 transform -translate-y-1/2 text-[#FFF] h-6 w-6" />
             <input
               type="text"
               placeholder="Busque por peças, marcas ou materiais..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8 sm:pl-10 xl:pl-30 pr-4 py-2 sm:py-3 rounded-[20px] border-2 border-[#0C3729] bg-[#B2CC57] focus:outline-none focus:border-[#0C3729] text-white placeholder-white font-dosis font-medium"
+              className="w-full pl-30 pr-4 py-3 rounded-full border-2 border-[#0C3729] bg-[#88a51d] focus:outline-none focus:border-[#0C3729] text-white placeholder-white font-dosis font-medium"
               style={{ boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)' }}
             />
           </div>
         </div>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
 
         {/* Filtros */}
         <div className="flex flex-wrap justify-center gap-4 mb-20">
@@ -176,7 +175,7 @@ export default function ProdutosPage() {
           ))}
         </div>
 
-        {/* Botões de paginação */}
+        {/* Pagination */}
         <div className="flex items-center justify-center space-x-8 mt-20 mb-20">
           <Button
             variant="outline"

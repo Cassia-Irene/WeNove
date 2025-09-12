@@ -58,7 +58,7 @@ export default function ProdutosPage() {
       price: "R$ 109,90",
       image: "/produto6.png",
       seller: "Marina Oliveira",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/woman-profile.png",
     },
     {
       id: 7,
@@ -66,7 +66,7 @@ export default function ProdutosPage() {
       price: "R$ 60,00",
       image: "/produto7.png",
       seller: "Luis Martins",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/man-profile.png",
     },
     {
       id: 8,
@@ -74,7 +74,7 @@ export default function ProdutosPage() {
       price: "R$ 108,90",
       image: "/produto8.png",
       seller: "Ricardo Almeida",
-      sellerAvatar: "/usuario-foto.png",
+      sellerAvatar: "/man-profile.png",
     },
   ]
 
@@ -92,7 +92,7 @@ export default function ProdutosPage() {
       <HeaderProduto />
 
       {/* Page Header */}
-        <div className="py-15 text-center mt-10 mb-20 bg-[#efe8db]"
+        <div className="w-screen py-15 text-center mb-20 bg-[#efe8db]"
         style={{boxShadow: '0 -1px 4px 0 rgba(0,0,0,0.25), 0 1px 4px 0 rgba(0,0,0,0.25)'}}
         >
 
@@ -114,7 +114,7 @@ export default function ProdutosPage() {
               placeholder="Busque por peças, marcas ou materiais..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8 sm:pl-10 xl:pl-30 pr-4 py-2 sm:py-3 rounded-[20px] border-2 border-[#0C3729] bg-[#B2CC57] focus:outline-none focus:border-[#0C3729] text-white placeholder-white font-dosis font-medium"
+              className="w-full pl-8 sm:pl-10 xl:pl-30 pr-4 py-2 sm:py-3 rounded-full border-2 border-[#0C3729] bg-[#88a51d] focus:outline-none focus:border-[#0C3729] text-white placeholder-white font-dosis font-medium"
               style={{ boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)' }}
             />
           </div>

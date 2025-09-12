@@ -32,7 +32,7 @@ export default function HeaderProduto() {
         </div>
 
         {/* Carrinho + Usuário */}
-            <div className="absolute top-6 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px] flex items-center space-x-3 sm:space-x-5 lg:space-x-7">
+            <div className="absolute top-4 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px] flex items-center space-x-3 sm:space-x-5 lg:space-x-7">
                 
                 <div className="relative">
                 <ShoppingCart className="h-5 w-5 sm:h-6 sm:w-6 text-[#5e4f45]" />
@@ -43,8 +43,8 @@ export default function HeaderProduto() {
                 
                 </div>
                 
-                <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center shadow-user">
-                <img src="/usuario-foto.png" alt="Foto do usuário" className="w-full h-full rounded-full object-cover"/>
+                <div className="w-12 h-12 bg-[#88a51d] rounded-full flex items-center justify-center shadow-user">
+                <img src="/usuario-foto.png" alt="Foto do usuário" />
                 </div>
             </div>
         </header>

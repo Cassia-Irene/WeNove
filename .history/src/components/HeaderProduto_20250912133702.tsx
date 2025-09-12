@@ -13,17 +13,17 @@ export default function HeaderProduto() {
         <img
           src="/Logo-produto.svg"
           alt="Wenove Logo"
-          className="absolute top-6 sm:top-6 lg:top-[30px] left-4 sm:left-6 lg:left-[30px] w-34 sm:w-34 lg:w-auto"
+          className="absolute top-[30px] left-[30px]"
         />
 
         {/* Nav + Retângulo */}
-        <div className="hidden sm:flex absolute top-4 sm:top-6 lg:top-[30px] left-1/2 -translate-x-1/2 w-[400px] lg:w-[500px] h-[40px] lg:h-[50px] flex items-center justify-center">
+        <div className="absolute top-[30px] left-1/2 -translate-x-1/2 w-[500px] h-[50px] flex items-center justify-center">
           
           {/* Retângulo atrás da nav */}
           <div className="absolute inset-0 bg-[#88A51D] rounded-[30px] shadow-[0_4px_4px_rgba(0,0,0,0.45)]" />
 
           {/* Navegação */}
-          <nav className="relative flex items-center gap-6 lg:gap-10 text-white text-sm lg:text-base">
+          <nav className="relative flex items-center gap-10 text-white">
             <Link href="/" className="">Início</Link>
             <Link href="/sobre-nos" className="">Sobre nós</Link>
             <Link href="/produtos" className="">Produtos</Link>
@@ -32,19 +32,15 @@ export default function HeaderProduto() {
         </div>
 
         {/* Carrinho + Usuário */}
-            <div className="absolute top-6 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px] flex items-center space-x-3 sm:space-x-5 lg:space-x-7">
-                
+            <div className="absolute top-[30px] right-[30px] flex items-center space-x-7">
                 <div className="relative">
-                <ShoppingCart className="h-5 w-5 sm:h-6 sm:w-6 text-[#5e4f45]" />
-                
-                <span className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-[#8f3332] text-white text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center text-[10px] sm:text-xs">
+                <ShoppingCart className="h-6 w-6 text-[#5e4f45]" />
+                <span className="absolute -top-2 -right-2 bg-[#8f3332] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     0
                 </span>
-                
                 </div>
-                
-                <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center shadow-user">
-                <img src="/usuario-foto.png" alt="Foto do usuário" className="w-full h-full rounded-full object-cover"/>
+                <div className="w-12 h-12 bg-[#88a51d] rounded-full flex items-center justify-center shadow-user">
+                <img src="/usuario-foto.png" alt="Foto do usuário" />
                 </div>
             </div>
         </header>
