@@ -114,7 +114,7 @@ export default function ProdutosPage() {
               placeholder="Busque por peças, marcas ou materiais..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8 sm:pl-10 xl:pl-30 pr-4 py-2 sm:py-3 rounded-[20px] border-2 border-[#0C3729] bg-[#B2CC57] focus:outline-none focus:border-[#0C3729] text-white placeholder-white font-dosis font-medium"
+              className="w-full pl-8 sm:pl-10 xl:pl-30 pr-4 py-2 sm:py-3 rounded-full border-2 border-[#0C3729] bg-[#88a51d] focus:outline-none focus:border-[#0C3729] text-white placeholder-white font-dosis font-medium"
               style={{ boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)' }}
             />
           </div>
