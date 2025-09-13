@@ -1,532 +1,363 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Menu, Cloud } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Upload, X, Plus, Edit3, User } from "lucide-react"
 
+export default function CadastroProduto() {
+  const [tags, setTags] = useState<string[]>(["Produto", "Venda", "Oferta"])
+  const [newTag, setNewTag] = useState("")
+  const [variations, setVariations] = useState([
+    { name: "Cor", values: ["Azul", "Verde", "Preto"] },
+    { name: "Tamanho", values: ["P", "M", "G"] },
+  ])
+  const [uploadedImages, setUploadedImages] = useState<File[]>([])
 
-export default function SellerRegistration() {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [registrationType, setRegistrationType] = useState("fisica")
-
-  const steps = [
-    { number: 1, title: "Conta" },
-    { number: 2, title: "Dados" },
-    { number: 3, title: "Pagamentos" },
-    { number: 4, title: "Documentos" },
-    { number: 5, title: "Loja" },
-  ]
-
-  const handleNext = () => {
-    if (currentStep < 5) {
-      setCurrentStep(currentStep + 1)
+  const addTag = () => {
+    if (newTag.trim() && !tags.includes(newTag.trim())) {
+      setTags([...tags, newTag.trim()])
+      setNewTag("")
     }
   }
 
-  const handlePrevious = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1)
+  const removeTag = (tagToRemove: string) => {
+    setTags(tags.filter((tag) => tag !== tagToRemove))
+  }
+
+  const addVariation = () => {
+    setVariations([...variations, { name: "", values: [] }])
+  }
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files
+    if (files) {
+      const newImages = Array.from(files).slice(0, 5 - uploadedImages.length)
+      setUploadedImages([...uploadedImages, ...newImages])
     }
   }
 
-  const getStepTitle = () => {
-    switch (currentStep) {
-      case 1:
-        return "Abra sua Loja e Venda Conosco"
-      case 2:
-        return "Informações Fiscais e de Endereço"
-      case 3:
-        return "Configure seus Pagamentos"
-      case 4:
-        return "Verificação de Documentos"
-      case 5:
-        return "Personalize sua Loja"
-      default:
-        return "Abra sua Loja e Venda Conosco"
-    }
-  }
-
-  const getStepSubtitle = () => {
-    switch (currentStep) {
-      case 1:
-        return "Siga as etapas para configurar sua conta de vendedor. É rápido e fácil!"
-      case 2:
-        return "Precisamos dos seus dados para a emissão de notas e para garantir a conformidade."
-      case 3:
-        return "Informe onde você deseja receber o dinheiro das suas vendas."
-      case 4:
-        return "Envie seus documentos para análise e para garantir a segurança da plataforma."
-      case 5:
-        return "Estamos quase lá! Configure os detalhes finais da sua vitrine."
-      default:
-        return "Siga as etapas para configurar sua conta de vendedor. É rápido e fácil!"
-    }
+  const removeImage = (index: number) => {
+    setUploadedImages(uploadedImages.filter((_, i) => i !== index))
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 font-dosis">
+    <div className="min-h-screen font-dosis bg-gray-50">
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Hero Section */}
-        <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#000000] mb-4 text-balance">
-            {getStepTitle()}
-          </h1>
-          <p className="text-base sm:text-lg text-gray-600 text-pretty max-w-3xl mx-auto">{getStepSubtitle()}</p>
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mb-8">
+          <div className="flex items-center space-x-3 mb-2">
+            <Edit3 className="w-6 h-6 text-gray-600" />
+            <h1 className="text-5xl font-bold text-gray-900">Cadastrar Novo Produto</h1>
+          </div>
+          <p className="text-gray-600">Preencha os campos abaixo para adicionar um produto ao marketplace.</p>
+          <div className="flex space-x-2 mt-4">
+            <Button size="sm" className="bg-[#88A51D] hover:bg-[#70A00D] text-[#0C3729] font-dosis font-semibold">
+              Salvar Rascunho
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-[#0C3729] text-[#88A51D] hover:bg-[#0C1000] bg-[#0C3729] font-dosis font-semibold"
+            >
+              Publicar Agora
+            </Button>
+          </div>
         </div>
 
-        {/* Progress Steps */}
-        <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6 lg:p-8 mb-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-2 mb-6 sm:mb-8">
-            {steps.map((step, index) => (
-              <div key={step.number} className="flex items-center gap-2">
-                <span
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                    step.number === currentStep
-                      ? "bg-green-500 text-white"
-                      : step.number < currentStep
-                        ? "bg-green-100 text-green-700"
-                        : "bg-gray-200 text-gray-600"
-                  }`}
-                >
-                  {step.number}
-                </span>
-                <span
-                  className={`text-sm sm:text-base ${
-                    step.number === currentStep
-                      ? "font-semibold text-gray-900 border-b-2 border-green-500 pb-1"
-                      : "text-gray-600"
-                  }`}
-                >
-                  {step.title}
-                </span>
-                {index < steps.length - 1 && <div className="hidden sm:block w-8 h-px bg-gray-200 ml-2" />}
-              </div>
-            ))}
-          </div>
-
-          {/* Form Section */}
-          <div>
-            {currentStep === 1 && (
-              <>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">1. Informações da Conta</h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="fullName" className="text-sm font-medium text-gray-700">
-                      Nome completo ou Razão Social <span className="text-red-500">*</span>
-                    </Label>
-                    <Input id="fullName" type="text" className="w-full" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="storeName" className="text-sm font-medium text-gray-700">
-                      Nome da Loja <span className="text-red-500">*</span>
-                    </Label>
-                    <Input id="storeName" type="text" className="w-full" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                      E-mail <span className="text-red-500">*</span>
-                    </Label>
-                    <Input id="email" type="email" className="w-full" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
-                      Telefone (WhatsApp) <span className="text-red-500">*</span>
-                    </Label>
-                    <Input id="phone" type="tel" className="w-full" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="password" className="text-sm font-medium text-gray-700">
-                      Senha <span className="text-red-500">*</span>
-                    </Label>
-                    <Input id="password" type="password" placeholder="xxxxxxxxx" className="w-full" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700">
-                      Confirmar Senha <span className="text-red-500">*</span>
-                    </Label>
-                    <Input id="confirmPassword" type="password" placeholder="xxxxxxxxx" className="w-full" />
-                  </div>
-                </div>
-              </>
-            )}
-
-            {currentStep === 2 && (
-              <>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">2. Dados Fiscais e Endereço</h2>
-
-                <div className="space-y-6">
-                  {/* Registration Type */}
-                  <div className="space-y-3">
-                    <Label className="text-sm font-medium text-gray-700">Tipo de cadastro</Label>
-                    <div className="flex gap-6">
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="radio"
-                          id="fisica"
-                          name="registrationType"
-                          value="fisica"
-                          checked={registrationType === "fisica"}
-                          onChange={(e) => setRegistrationType(e.target.value)}
-                          className="w-4 h-4 text-green-600"
-                        />
-                        <Label htmlFor="fisica" className="text-sm text-gray-700 cursor-pointer">
-                          Pessoa Física
-                        </Label>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="radio"
-                          id="juridica"
-                          name="registrationType"
-                          value="juridica"
-                          checked={registrationType === "juridica"}
-                          onChange={(e) => setRegistrationType(e.target.value)}
-                          className="w-4 h-4 text-green-600"
-                        />
-                        <Label htmlFor="juridica" className="text-sm text-gray-700 cursor-pointer">
-                          Pessoa Jurídica
-                        </Label>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Legal Entity Data */}
-                  {registrationType === "juridica" && (
-                    <div className="space-y-4">
-                      <h3 className="text-base font-medium text-gray-900">
-                        Dados de Pessoa Jurídica <span className="text-red-500">*</span>
-                      </h3>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="cnpj" className="text-sm font-medium text-gray-700">
-                            CNPJ <span className="text-red-500">*</span>
-                          </Label>
-                          <Input id="cnpj" type="text" className="w-full" />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="razaoSocial" className="text-sm font-medium text-gray-700">
-                            Razão Social
-                          </Label>
-                          <Input id="razaoSocial" type="text" className="w-full" />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="nomeFantasia" className="text-sm font-medium text-gray-700">
-                            Nome Fantasia <span className="text-red-500">*</span>
-                          </Label>
-                          <Input id="nomeFantasia" type="text" className="w-full" />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="inscricaoEstadual" className="text-sm font-medium text-gray-700">
-                            Inscrição Estadual (se aplicável)
-                          </Label>
-                          <Input id="inscricaoEstadual" type="text" className="w-full" />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Physical Person Data */}
-                  {registrationType === "fisica" && (
-                    <div className="space-y-4">
-                      <h3 className="text-base font-medium text-gray-900">Dados de Pessoa Física</h3>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="cpf" className="text-sm font-medium text-gray-700">
-                            CPF <span className="text-red-500">*</span>
-                          </Label>
-                          <Input id="cpf" type="text" className="w-full" />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="nomeLoja" className="text-sm font-medium text-gray-700">
-                            Nome da Loja <span className="text-red-500">*</span>
-                          </Label>
-                          <Input id="nomeLoja" type="text" className="w-full" />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Company Address */}
-                  <div className="space-y-4">
-                    <h3 className="text-base font-medium text-gray-900">
-                      Endereço Completo <span className="text-red-500">*</span>
-                    </h3>
-
-                    <div className="space-y-4">
-                      {/* CEP and Street Address */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <div className="flex gap-2">
-                            <Input id="cep" type="text" placeholder="CEP" className="flex-1" />
-                            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-4 whitespace-nowrap">
-                              BUSCAR CEP
-                            </Button>
-                          </div>
-                        </div>
-                        <div className="space-y-2">
-                          <Input id="endereco" type="text" placeholder="Rua, Avenida, etc." className="w-full" />
-                        </div>
-                      </div>
-
-                      {/* Address Details */}
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div className="space-y-2">
-                          <Input id="numero" type="text" placeholder="Número" className="w-full" />
-                        </div>
-                        <div className="space-y-2">
-                          <Input id="bairro" type="text" placeholder="Bairro" className="w-full" />
-                        </div>
-                        <div className="space-y-2">
-                          <Input id="cidade" type="text" placeholder="Cidade" className="w-full" />
-                        </div>
-                        <div className="space-y-2">
-                          <Input id="estado" type="text" placeholder="Estado" className="w-full" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-
-            {currentStep === 3 && (
-              <>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
-                  3. Informações Bancárias para Repasses
-                </h2>
-
-                <div className="space-y-6">
-                  {/* Bank Information */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="banco" className="text-sm font-medium text-gray-700">
-                        Banco <span className="text-red-500">*</span>
-                      </Label>
-                      <Input id="banco" type="text" className="w-full" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="agencia" className="text-sm font-medium text-gray-700">
-                        Agência <span className="text-red-500">*</span>
-                      </Label>
-                      <Input id="agencia" type="text" className="w-full" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="conta" className="text-sm font-medium text-gray-700">
-                        Conta (com dígito) <span className="text-red-500">*</span>
-                      </Label>
-                      <Input id="conta" type="text" className="w-full" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="titular" className="text-sm font-medium text-gray-700">
-                        Nome do Titular <span className="text-red-500">*</span>
-                      </Label>
-                      <Input id="titular" type="text" className="w-full" />
-                      <p className="text-xs text-gray-500">Deve ser o mesmo do CPF/CNPJ.</p>
-                    </div>
-                  </div>
-
-                  {/* PIX Key */}
-                  <div className="space-y-2">
-                    <Label htmlFor="chavePix" className="text-sm font-medium text-gray-700">
-                      Ou Chave PIX (opcional)
-                    </Label>
-                    <Input
-                      id="chavePix"
-                      type="text"
-                      placeholder="CPF, CNPJ, e-mail, telefone ou aleatória"
-                      className="w-full"
-                    />
-                  </div>
-                </div>
-              </>
-            )}
-
-            {currentStep === 4 && (
-              <>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
-                  4. Documentos de Verificação
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  Para sua segurança e dos clientes, precisamos verificar sua identidade. Seus dados estão seguros.
+        <div className="space-y-6">
+          {/* 1. Informações Básicas */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg font-dosis font-semibold">1. Informações Básicas</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Label htmlFor="nome-produto">Nome do Produto</Label>
+                <Input id="nome-produto" placeholder="Ex: Jaqueta Eco Jeans" className="mt-1" />
+                <p className="text-xs text-gray-500 mt-1">
+                  SEO Friendly! Use um título claro, incluindo a principal benefício ou material.
                 </p>
+              </div>
 
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Document Upload 1 */}
-                    <div className="space-y-2">
-                      <Label className="text-sm font-medium text-gray-700">
-                        Documento de Identidade (RG/CPF ou Contrato Social) <span className="text-red-500">*</span>
-                      </Label>
+              <div>
+                <Label htmlFor="descricao">Descrição Detalhada</Label>
+                <Textarea
+                  id="descricao"
+                  placeholder="Descreva os benefícios, especificações técnicas, instruções de uso, etc."
+                  className="mt-1 min-h-[100px]"
+                />
+              </div>
 
-                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer">
-                        <Cloud className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                        <p className="text-gray-500 text-sm">Clique para enviar</p>
-                        <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
-                      </div>
-                    </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="categoria">Categoria</Label>
+                  <Input id="categoria" placeholder="Vestuário e Moda" className="mt-1" />
+                </div>
 
-                    {/* Document Upload 2 */}
-                    <div className="space-y-2">
-                      <Label className="text-sm font-medium text-gray-700">
-                        Comprovante de Endereço <span className="text-red-500">*</span>
-                      </Label>
-                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer">
-                        <Cloud className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                        <p className="text-gray-500 text-sm">Clique para enviar</p>
-                        <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
-                      </div>
-                    </div>
+                <div>
+                  <Label htmlFor="marca">Marca (se aplicável)</Label>
+                  <Input id="marca" placeholder="Ex: Levi's Jeans, C&A" className="mt-1" />
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="tags">Palavras-chave / Tags</Label>
+                <div className="mt-1 space-y-2">
+                  <div className="flex flex-wrap gap-2">
+                    {tags.map((tag, index) => (
+                      <Badge key={index} variant="secondary" className="bg-[#88A51D] text-[#F5F5F5] font-dosis font-semibold">
+                        {tag}
+                        <button onClick={() => removeTag(tag)} className="ml-1 hover:text-[#F5F5F5]">
+                          <X className="w-3 h-3" />
+                        </button>
+                      </Badge>
+                    ))}
                   </div>
+                  <div className="flex space-x-2">
+                    <Input
+                      placeholder="Digite uma tag e tecle Enter"
+                      value={newTag}
+                      onChange={(e) => setNewTag(e.target.value)}
+                      onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
+                      className="flex-1"
+                    />
+                    <Button onClick={addTag} size="sm" variant="outline">
+                      Adicionar
+                    </Button>
+                  </div>
+                  <p className="text-xs text-gray-500">Ajude os clientes a encontrarem seu produto na busca.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-                  {/* Logo Upload */}
-                  <div className="space-y-2">
-                    <Label className="text-sm font-medium text-gray-700">Logotipo da Loja</Label>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer max-w-md">
-                      <Cloud className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-500 text-sm">Clique para enviar</p>
-                      <input type="file" className="hidden" accept=".jpg,.jpeg,.png,.svg" />
-                    </div>
+          {/* 2. Imagens e Mídias */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg font-semibold">2. Imagens e Mídias</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Label>Imagens do Produto *</Label>
+                <div className="mt-2">
+                  <input
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    id="image-upload"
+                    disabled={uploadedImages.length >= 5}
+                  />
+                  <label
+                    htmlFor="image-upload"
+                    className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors cursor-pointer block"
+                  >
+                    <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                    <p className="text-gray-600 mb-2">Arraste as imagens aqui ou clique para selecionar</p>
+                    <p className="text-sm text-gray-500">PNG, JPG até 10MB</p>
+                    <Button type="button" variant="outline" className="mt-4 bg-transparent pointer-events-none">
+                      Selecionar Arquivos
+                    </Button>
+                  </label>
+                </div>
+
+                {uploadedImages.length > 0 && (
+                  <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    {uploadedImages.map((image, index) => (
+                      <div key={index} className="relative group">
+                        <img
+                          src={URL.createObjectURL(image) || "/placeholder.svg"}
+                          alt={`Upload ${index + 1}`}
+                          className="w-full h-24 object-cover rounded-lg border"
+                        />
+                        <button
+                          onClick={() => removeImage(index)}
+                          className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <p className="text-xs text-gray-500 mt-2">
+                  * Máximo de 5 fotos ({uploadedImages.length}/5). Recomendamos fotos quadradas para melhor formatação.
+                </p>
+              </div>
+
+              <div>
+                <Label htmlFor="video">Vídeo demonstrativo (opcional)</Label>
+                <Input id="video" placeholder="Cole aqui o link do YouTube ou Vimeo" className="mt-1" />
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* 3. Preço e Estoque */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg font-semibold">3. Preço e Estoque</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="preco-venda">Preço de Venda</Label>
+                  <Input id="preco-venda" placeholder="R$ 0,00" className="mt-1" />
+                </div>
+
+                <div>
+                  <Label htmlFor="preco-promocional">Preço Promocional</Label>
+                  <Input id="preco-promocional" placeholder="R$ 0,00" className="mt-1" />
+                </div>
+
+                <div>
+                  <Label htmlFor="quantidade">Quantidade em Estoque</Label>
+                  <Input id="quantidade" placeholder="0" type="number" className="mt-1" />
+                </div>
+
+                <div>
+                  <Label htmlFor="sku">SKU (código interno)</Label>
+                  <Input id="sku" placeholder="SKU-0340" className="mt-1" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* 4. Entrega e Frete */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg font-semibold">4. Entrega e Frete</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="peso">Peso (kg)</Label>
+                  <Input id="peso" placeholder="0,5" type="number" step="0.1" className="mt-1" />
+                </div>
+
+                <div>
+                  <Label>Dimensões (CM)</Label>
+                  <div className="flex items-center gap-2 mt-1">
+                    <Input placeholder="A" className="flex-1" />
+                    <span className="text-gray-500 font-medium">x</span>
+                    <Input placeholder="L" className="flex-1" />
+                    <span className="text-gray-500 font-medium">x</span>
+                    <Input placeholder="C" className="flex-1" />
                   </div>
                 </div>
-              </>
-            )}
+              </div>
+            </CardContent>
+          </Card>
 
-            {currentStep === 5 && (
-              <>
-                <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">
-                  5. Configurações da Loja e Políticas
-                </h2>
+          {/* 5. Variações */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg font-semibold">5. Variações</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-sm text-gray-600">
+                Ex: uma camiseta pode ter P, M e G cores diferentes. Cada variação deve conter o estoque separadamente.
+              </p>
 
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Main Category */}
-                    <div className="space-y-2">
-                      <Label htmlFor="categoria" className="text-sm font-medium text-gray-700">
-                        Categoria Principal <span className="text-red-500">*</span>
-                      </Label>
-                      <Input id="categoria" type="text" className="w-full" />
+              {variations.map((variation, index) => (
+                <div key={index} className="border rounded-lg p-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-medium">Opção {index + 1}</h4>
+                    {index > 0 && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setVariations(variations.filter((_, i) => i !== index))}
+                      >
+                        <X className="w-4 h-4" />
+                      </Button>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label>Tipo (Ex: Cor)</Label>
+                      <Input
+                        placeholder="Tipo Ex: Cor"
+                        value={variation.name}
+                        onChange={(e) => {
+                          const newVariations = [...variations]
+                          newVariations[index].name = e.target.value
+                          setVariations(newVariations)
+                        }}
+                        className="mt-1"
+                      />
                     </div>
 
-                    {/* Social Media Links */}
-                    <div className="space-y-2">
-                      <Label htmlFor="socialLinks" className="text-sm font-medium text-gray-700">
-                        Links de Redes Sociais
-                      </Label>
+                    <div>
+                      <Label>Valores (Ex: Azul, Verde, Preto)</Label>
                       <Input
-                        id="socialLinks"
-                        type="url"
-                        placeholder="https://instagram.com/sualoja"
-                        className="w-full"
+                        placeholder="Valores (Ex: P, M, G)"
+                        value={variation.values.join(", ")}
+                        onChange={(e) => {
+                          const newVariations = [...variations]
+                          newVariations[index].values = e.target.value.split(",").map((v) => v.trim())
+                          setVariations(newVariations)
+                        }}
+                        className="mt-1"
                       />
                     </div>
                   </div>
-
-                  {/* Store Description */}
-                  <div className="space-y-2">
-                    <Label htmlFor="descricao" className="text-sm font-medium text-gray-700">
-                      Breve descrição da sua loja
-                    </Label>
-                    <Textarea
-                      id="descricao"
-                      rows={4}
-                      placeholder="Conte um pouco sobre sua loja, produtos e diferenciais..."
-                      className="w-full resize-none"
-                    />
-                  </div>
-
-                  {/* Terms and Conditions */}
-                  <div className="space-y-4 pt-4">
-                    <div className="flex items-start gap-3">
-                      <Checkbox id="terms" className="mt-1" />
-                      <Label htmlFor="terms" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
-                        Eu li e aceito os <span className="text-green-600 underline">Termos de Uso e Políticas</span> do
-                        marketplace.
-                      </Label>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <Checkbox id="lgpd" className="mt-1" />
-                      <Label htmlFor="lgpd" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
-                        Eu concordo com o uso dos meus dados conforme a LGPD para fins de cadastro e operação da loja.
-                      </Label>
-                    </div>
-                  </div>
                 </div>
-              </>
-            )}
+              ))}
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0 mt-8 pt-6 border-t">
-              {currentStep === 1 ? (
-                <>
-                  <Button
-                    variant="outline"
-                    className="bg-green-100 text-green-700 border-green-200 hover:bg-green-200 w-full sm:w-auto order-2 sm:order-1"
-                  >
-                    Salvar Rascunho
-                  </Button>
-                  <Button
-                    onClick={handleNext}
-                    className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto order-1 sm:order-2"
-                  >
-                    Próximo
-                  </Button>
-                </>
-              ) : currentStep === 5 ? (
-                <>
-                  <Button
-                    onClick={handlePrevious}
-                    variant="outline"
-                    className="bg-green-100 text-green-700 border-green-200 hover:bg-green-200 w-full sm:w-auto order-2 sm:order-1"
-                  >
-                    Anterior
-                  </Button>
-                  <Button className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto order-1 sm:order-2">
-                    Finalizar Cadastro
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button
-                    onClick={handlePrevious}
-                    variant="outline"
-                    className="bg-green-100 text-green-700 border-green-200 hover:bg-green-200 w-full sm:w-auto order-2 sm:order-1"
-                  >
-                    Anterior
-                  </Button>
-                  <Button
-                    onClick={handleNext}
-                    className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto order-1 sm:order-2"
-                  >
-                    Próximo
-                  </Button>
-                </>
-              )}
-            </div>
+              <Button variant="outline" onClick={addVariation} className="w-full bg-transparent">
+                <Plus className="w-4 h-4 mr-2" />
+                Adicionar outra opção
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* 6. Regras e Políticas */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg font-semibold">6. Regras e Políticas</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Label htmlFor="politica-devolucao">Política de devolução</Label>
+                <Textarea
+                  id="politica-devolucao"
+                  placeholder="Se defeito do produto do marketplace, devemos 30d"
+                  className="mt-1"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="garantia">Garantia do produto (se houver)</Label>
+                <Input id="garantia" placeholder="Ex: 12 meses, 1 ano" className="mt-1" />
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Botões de Ação */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-6">
+            <Button className="bg-[#88A51D] hover:bg-[#70A00D] text-[#0C3729] font-dosis font-semibold">Salvar Rascunho</Button>
+            <Button
+              variant="outline"
+              className="border-[#0C3729] text-[#88A51D] hover:bg-[#0C1000] bg-[#0C3729] font-dosis font-semibold"
+            >
+              Publicar Produto
+            </Button>
           </div>
         </div>
       </main>
+
+
     </div>
   )
 }
