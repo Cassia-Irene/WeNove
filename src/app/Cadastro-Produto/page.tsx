@@ -55,7 +55,7 @@ export default function CadastroProduto() {
         <div className="mb-8">
           <div className="flex items-center space-x-3 mb-2">
             <Edit3 className="w-6 h-6 text-gray-600" />
-            <h1 className="text-5xl font-bold text-gray-900">Cadastrar Novo Produto</h1>
+            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900">Cadastrar Novo Produto</h1>
           </div>
           <p className="text-gray-600">Preencha os campos abaixo para adicionar um produto ao marketplace.</p>
           <div className="flex space-x-2 mt-4">
