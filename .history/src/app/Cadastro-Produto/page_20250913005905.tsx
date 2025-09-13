@@ -71,7 +71,7 @@ export default function CadastroProduto() {
                 <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)} />
 
                 {/* Sidebar */}
-                <div className="absolute left-0 top-0 h-full w-80 bg-[#8B3130] shadow-xl transform transition-transform duration-300 ease-in-out">
+                <div className="absolute left-0 top-0 h-full w-80 bg-[#0C3729] shadow-xl transform transition-transform duration-300 ease-in-out">
                   
                   {/* Header */}
                   <div className="flex items-center justify-between p-6 border-b border-[#FFCC00]/20">
@@ -138,7 +138,7 @@ export default function CadastroProduto() {
             <Button
               size="sm"
               variant="outline"
-              className="border-[#0C3729] text-[#88A51D] hover:bg-[#0C1000] bg-[#0C3729] font-dosis font-semibold"
+              className="border-[#0C3729] text-[#88A51D] hover:bg-[#0C1000] bg-[#8B3130] font-dosis font-semibold"
             >
               Publicar Agora
             </Button>

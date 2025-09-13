@@ -9,13 +9,11 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Upload, X, Plus, Edit3, Menu } from "lucide-react"
-import Link from "next/link";
+import { Upload, X, Plus, Edit3 } from "lucide-react"
 
 import HeaderVendendor from "@/components/HeaderVendedor"
 
 export default function CadastroProduto() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [tags, setTags] = useState<string[]>(["Produto", "Venda", "Oferta"])
   const [newTag, setNewTag] = useState("")
   const [variations, setVariations] = useState([
@@ -58,7 +56,7 @@ export default function CadastroProduto() {
 
       <button
           onClick={() => setIsMobileMenuOpen(true)}
-          className="sm:hidden absolute top-6 left-4 w-8 h-8 z-20 bg-[#8B3130] rounded-full flex items-center justify-center"
+          className="sm:hidden absolute top-6 left-4 w-8 h-8 z-20 bg-[#88a51d] rounded-full flex items-center justify-center"
         >
           <Menu className="w-6 h-6 text-white drop-shadow-md" />
         </button>
@@ -71,7 +69,7 @@ export default function CadastroProduto() {
                 <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)} />
 
                 {/* Sidebar */}
-                <div className="absolute left-0 top-0 h-full w-80 bg-[#8B3130] shadow-xl transform transition-transform duration-300 ease-in-out">
+                <div className="absolute left-0 top-0 h-full w-80 bg-[#0C3729] shadow-xl transform transition-transform duration-300 ease-in-out">
                   
                   {/* Header */}
                   <div className="flex items-center justify-between p-6 border-b border-[#FFCC00]/20">

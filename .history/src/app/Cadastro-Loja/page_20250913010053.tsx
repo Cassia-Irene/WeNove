@@ -8,11 +8,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Menu, Cloud, X } from "lucide-react"
 import Link from "next/link";
-import HeaderVendendor from "@/components/HeaderVendedor"
 
 
 export default function SellerRegistration() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [registrationType, setRegistrationType] = useState("fisica")
 
@@ -72,75 +70,6 @@ export default function SellerRegistration() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-dosis">
-
-      <HeaderVendendor />
-
-      <button
-          onClick={() => setIsMobileMenuOpen(true)}
-          className="sm:hidden absolute top-6 left-4 w-8 h-8 z-20 bg-[#8B3130] rounded-full flex items-center justify-center"
-        >
-          <Menu className="w-6 h-6 text-white drop-shadow-md" />
-        </button>
-
-      {/* Menu do celular */}
-            {isMobileMenuOpen && (
-              <div className="fixed inset-0 z-50 sm:hidden">
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)} />
-
-                {/* Sidebar */}
-                <div className="absolute left-0 top-0 h-full w-80 bg-[#8B3130] shadow-xl transform transition-transform duration-300 ease-in-out">
-                  
-                  {/* Header */}
-                  <div className="flex items-center justify-between p-6 border-b border-[#FFCC00]/20">
-                    <img src="/Logo-landing.svg" alt="Wenove Logo" className="w-30" />
-                    <button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="w-8 h-8 flex items-center justify-center text-white hover:text-[#FFCC00] transition-colors"
-                    >
-                      <X className="w-6 h-6" />
-                    </button>
-                  </div>
-
-                  {/* Navigation */}
-                  <nav className="flex flex-col p-6 space-y-6">
-                    <Link
-                      href="/"
-                      className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Início
-                    </Link>
-
-                    <Link
-                      href="/sobre-nos"
-                      className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Sobre nós
-                    </Link>
-
-                    <Link
-                      href="/produtos"
-                      className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Produtos
-                    </Link>
-
-                    <Link
-                      href="/contato"
-                      className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Contato
-                    </Link>
-                  </nav>
-
-                </div>
-              </div>
-            )}
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
