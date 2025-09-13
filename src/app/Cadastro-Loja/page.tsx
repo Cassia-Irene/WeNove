@@ -11,12 +11,8 @@ import Link from "next/link";
 import HeaderVendendor from "@/components/HeaderVendedor"
 
 
-<<<<<<< HEAD
 export default function SellerRegistration() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-=======
-export default function CadastroLoja() {
->>>>>>> 77a90ee66871963f3f95ba2b7e61a4b7c0426f15
   const [currentStep, setCurrentStep] = useState(1)
   const [registrationType, setRegistrationType] = useState("fisica")
 
@@ -78,7 +74,6 @@ export default function CadastroLoja() {
   return (
     <div className="min-h-screen bg-gray-50 font-dosis">
 
-<<<<<<< HEAD
       <HeaderVendendor />
 
       <button
@@ -149,9 +144,6 @@ export default function CadastroLoja() {
             )}
 
       {/* Main Content */}
-=======
-      {/* Conteúdo principal */}
->>>>>>> 77a90ee66871963f3f95ba2b7e61a4b7c0426f15
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Seção de Heróis */}
         <div className="text-center mb-8 sm:mb-12">
