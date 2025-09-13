@@ -13,7 +13,7 @@ export default function HeaderProduto() {
         <img
           src="/Logo-produto.svg"
           alt="Wenove Logo"
-          className="absolute top-6 sm:top-6 lg:top-[30px] left-4 sm:left-6 lg:left-[30px] w-34 sm:w-34 lg:w-auto"
+          className="hidden sm:block absolute top-6 sm:top-6 lg:top-[30px] left-4 sm:left-6 lg:left-[30px] w-34 sm:w-34 lg:w-auto"
         />
 
         {/* Nav + Retângulo */}
