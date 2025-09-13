@@ -9,9 +9,10 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Menu, Cloud } from "lucide-react"
 
 
-export default function SellerRegistration() {
+export default function CadastroLoja() {
   const [currentStep, setCurrentStep] = useState(1)
   const [registrationType, setRegistrationType] = useState("fisica")
+
 
   const steps = [
     { number: 1, title: "Conta" },
@@ -70,9 +71,9 @@ export default function SellerRegistration() {
   return (
     <div className="min-h-screen bg-gray-50 font-dosis">
 
-      {/* Main Content */}
+      {/* Conteúdo principal */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Hero Section */}
+        {/* Seção de Heróis */}
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#000000] mb-4 text-balance">
             {getStepTitle()}
@@ -80,7 +81,7 @@ export default function SellerRegistration() {
           <p className="text-base sm:text-lg text-gray-600 text-pretty max-w-3xl mx-auto">{getStepSubtitle()}</p>
         </div>
 
-        {/* Progress Steps */}
+        {/* Etapas do progresso */}
         <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6 lg:p-8 mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-2 mb-6 sm:mb-8">
             {steps.map((step, index) => (
@@ -110,7 +111,7 @@ export default function SellerRegistration() {
             ))}
           </div>
 
-          {/* Form Section */}
+          {/* Seção de formulário */}
           <div>
             {currentStep === 1 && (
               <>
@@ -167,7 +168,7 @@ export default function SellerRegistration() {
                 <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">2. Dados Fiscais e Endereço</h2>
 
                 <div className="space-y-6">
-                  {/* Registration Type */}
+                  {/* Tipo de registro */}
                   <div className="space-y-3">
                     <Label className="text-sm font-medium text-gray-700">Tipo de cadastro</Label>
                     <div className="flex gap-6">
@@ -202,7 +203,7 @@ export default function SellerRegistration() {
                     </div>
                   </div>
 
-                  {/* Legal Entity Data */}
+                  {/* Dados da Entidade Jurídica */}
                   {registrationType === "juridica" && (
                     <div className="space-y-4">
                       <h3 className="text-base font-medium text-gray-900">
@@ -241,7 +242,7 @@ export default function SellerRegistration() {
                     </div>
                   )}
 
-                  {/* Physical Person Data */}
+                  {/* Dados de Pessoa Física */}
                   {registrationType === "fisica" && (
                     <div className="space-y-4">
                       <h3 className="text-base font-medium text-gray-900">Dados de Pessoa Física</h3>
@@ -264,14 +265,14 @@ export default function SellerRegistration() {
                     </div>
                   )}
 
-                  {/* Company Address */}
+                  {/* Endereço da empresa */}
                   <div className="space-y-4">
                     <h3 className="text-base font-medium text-gray-900">
                       Endereço Completo <span className="text-red-500">*</span>
                     </h3>
 
                     <div className="space-y-4">
-                      {/* CEP and Street Address */}
+                      {/* CEP e Endereço */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <div className="flex gap-2">
@@ -286,7 +287,7 @@ export default function SellerRegistration() {
                         </div>
                       </div>
 
-                      {/* Address Details */}
+                      {/* Detalhes do endereço */}
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="space-y-2">
                           <Input id="numero" type="text" placeholder="Número" className="w-full" />
@@ -314,7 +315,7 @@ export default function SellerRegistration() {
                 </h2>
 
                 <div className="space-y-6">
-                  {/* Bank Information */}
+                  {/* Informações bancárias */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="banco" className="text-sm font-medium text-gray-700">
@@ -346,7 +347,7 @@ export default function SellerRegistration() {
                     </div>
                   </div>
 
-                  {/* PIX Key */}
+                  {/* Chave PIX */}
                   <div className="space-y-2">
                     <Label htmlFor="chavePix" className="text-sm font-medium text-gray-700">
                       Ou Chave PIX (opcional)
@@ -373,7 +374,7 @@ export default function SellerRegistration() {
 
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Document Upload 1 */}
+                    {/* Upload de documento 1 */}
                     <div className="space-y-2">
                       <Label className="text-sm font-medium text-gray-700">
                         Documento de Identidade (RG/CPF ou Contrato Social) <span className="text-red-500">*</span>
@@ -386,7 +387,7 @@ export default function SellerRegistration() {
                       </div>
                     </div>
 
-                    {/* Document Upload 2 */}
+                    {/* Upload de documento 2 */}
                     <div className="space-y-2">
                       <Label className="text-sm font-medium text-gray-700">
                         Comprovante de Endereço <span className="text-red-500">*</span>
@@ -399,7 +400,7 @@ export default function SellerRegistration() {
                     </div>
                   </div>
 
-                  {/* Logo Upload */}
+                  {/* Upload de logotipo */}
                   <div className="space-y-2">
                     <Label className="text-sm font-medium text-gray-700">Logotipo da Loja</Label>
                     <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer max-w-md">
@@ -420,7 +421,7 @@ export default function SellerRegistration() {
 
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Main Category */}
+                    {/* Categoria principal */}
                     <div className="space-y-2">
                       <Label htmlFor="categoria" className="text-sm font-medium text-gray-700">
                         Categoria Principal <span className="text-red-500">*</span>
@@ -428,7 +429,7 @@ export default function SellerRegistration() {
                       <Input id="categoria" type="text" className="w-full" />
                     </div>
 
-                    {/* Social Media Links */}
+                    {/* Links de mídia social */}
                     <div className="space-y-2">
                       <Label htmlFor="socialLinks" className="text-sm font-medium text-gray-700">
                         Links de Redes Sociais
@@ -442,7 +443,7 @@ export default function SellerRegistration() {
                     </div>
                   </div>
 
-                  {/* Store Description */}
+                  {/* Descrição da Loja */}
                   <div className="space-y-2">
                     <Label htmlFor="descricao" className="text-sm font-medium text-gray-700">
                       Breve descrição da sua loja
@@ -455,7 +456,7 @@ export default function SellerRegistration() {
                     />
                   </div>
 
-                  {/* Terms and Conditions */}
+                  {/* Termos e Condições */}
                   <div className="space-y-4 pt-4">
                     <div className="flex items-start gap-3">
                       <Checkbox id="terms" className="mt-1" />
@@ -476,7 +477,7 @@ export default function SellerRegistration() {
               </>
             )}
 
-            {/* Action Buttons */}
+            {/* Botões de ação */}
             <div className="flex flex-col sm:flex-row sm:justify-between gap-3 sm:gap-0 mt-8 pt-6 border-t">
               {currentStep === 1 ? (
                 <>
