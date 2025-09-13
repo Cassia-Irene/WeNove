@@ -177,7 +177,7 @@ export default function ProdutosPage() {
 
           {/* Barra de Busca */}
           <div className="max-w-xs sm:max-w-md mx-auto relative">
-            <Search className="absolute sm:left-4 lg:left-20 xl:left-20 top-1/2 transform -translate-y-1/2 text-[#FFF] h-4 w-4 sm:h-5 sm:w-5 sm:h-6 sm:w-6 " />
+            <Search className="absolute sm:left-4 lg:left-16 xl:left-20 top-1/2 transform -translate-y-1/2 text-[#FFF] h-4 w-4 sm:h-5 sm:w-5 sm:h-6 sm:w-6 " />
             
             <input
               type="text"
