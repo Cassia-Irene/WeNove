@@ -148,7 +148,7 @@ export default function WenoveLanding() {
         {/* Section de Serviços */}
 
         <section
-          className="relative py-8 sm:py-12 lg:py-16 px-4 sm:px-6 z-20 mt-[-100px] sm:mt-[-120px] lg:mt-[-150px] rounded-[20px] overflow-hidden max-w-[90%] md:max-w-[85%] lg:max-w-[95%] xl:max-w-[70%]"
+          className="relative py-8 sm:py-12 lg:py-16 px-4 sm:px-6 z-20 mt-[-100px] sm:mt-[-120px] lg:mt-[-150px] xl:mt-[-100px] rounded-[20px] overflow-hidden max-w-[90%] md:max-w-[85%] lg:max-w-[95%] xl:max-w-[70%]"
           style={{
             backgroundImage: 'url("/Fundo-servicos.svg")',
             backgroundSize: 'cover',
@@ -161,7 +161,7 @@ export default function WenoveLanding() {
           }}
         >
           <div className="relative z-10 max-w-6xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#8f3332] text-center mb-8 sm:mb-10 lg:mb-12 text-balance"
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#8f3332] text-center mb-8 sm:mb-10 lg:mb-12 text-balance"
             style={{ fontFamily: "Futura, sans-serif" }}
             >
               Dando um novo propósito às suas roupas
@@ -177,7 +177,7 @@ export default function WenoveLanding() {
                     <Package className="w-12 h-12 sm:w-16 sm:h-16 text-[#8F3332] group-hover:text-[#FFFFFF] transition-colors duration-300" />
                   </div>
                   
-                  <h3 className="text-lg sm:text-xl xl:text-2xl text-[#8f3332] mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-white"
+                  <h3 className="text-lg sm:text-xl text-[#8f3332] mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-white"
                   style={{ fontFamily: "Futura, sans-serif" }}
                   >COLETA</h3>
                   
@@ -195,7 +195,7 @@ export default function WenoveLanding() {
                     <Scissors className="w-12 h-12 sm:w-16 sm:h-16 text-[#8f3332] group-hover:text-[#FFFFFF] transition-colors duration-300" />
                   </div>
                   
-                  <h3 className="text-lg sm:text-xl xl:text-2xl text-[#8f3332] mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-white"
+                  <h3 className="text-lg sm:text-xl text-[#8f3332] mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-white"
                   style={{ fontFamily: "Futura, sans-serif" }}
                   >TRIAGEM</h3>
                   
@@ -213,7 +213,7 @@ export default function WenoveLanding() {
                     <RefreshCw className="w-12 h-12 sm:w-16 sm:h-16 text-[#8f3332] group-hover:text-[#FFFFFF] transition-colors duration-300" />
                   </div>
                   
-                  <h3 className="text-lg sm:text-xl xl:text-2xl text-[#8f3332] mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-white"
+                  <h3 className="text-lg sm:text-xl text-[#8f3332] mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-white"
                   style={{ fontFamily: "Futura, sans-serif" }}
                   >REAPROVEITAMENTO</h3>
                   
@@ -231,7 +231,7 @@ export default function WenoveLanding() {
                     <Recycle className="w-12 h-12 sm:w-16 sm:h-16 text-[#8f3332] group-hover:text-[#FFFFFF] transition-colors duration-300" />
                   </div>
                   
-                  <h3 className="text-lg sm:text-xl xl:text-2xl text-[#8f3332] mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-white"
+                  <h3 className="text-lg sm:text-xl text-[#8f3332] mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-white"
                   style={{ fontFamily: "Futura, sans-serif" }}
                   >RECICLAGEM</h3>
                   

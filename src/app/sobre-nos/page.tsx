@@ -106,8 +106,10 @@ export default function Sobre_nos() {
           <div className="absolute h-full inset-0 bg-black/40" />
 
         {/* Conteúdo central opcional */}
-          <div className="relative top-[20%] z-10 text-white text-center">
-            <h1 className=" text-3xl md:text-5xl font-bold">Sobre Nós</h1>
+          <div className="relative top-[10%] z-10 text-white text-center">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl"
+            style={{ fontFamily: "Futura, sans-serif" }}
+            >Sobre Nós</h1>
           </div>
 
         </section>
@@ -117,7 +119,7 @@ export default function Sobre_nos() {
 
       <div className="bg-[#FFF]">
         <main className="px-4 md:px-8 py-12 md:py-16 max-w-4xl mx-auto">
-        <div className="space-y-6 text-gray-700 leading-relaxed text-center">
+        <div className="font-dosis space-y-6 leading-relaxed text-justify text-center">
           <p className="text-sm md:text-base">
             Nós somos estudantes de tecnologia do Centro Universitário Dom Bosco (UNDB) de São Luís - MA. Para nós, a
             sustentabilidade não deve ser apenas uma meta, mas também um compromisso diário. Motivados a aplicar o que
@@ -144,21 +146,24 @@ export default function Sobre_nos() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
             {/* Contact Info */}
             <div className="text-center">
-              <h2 className="text-yellow-600 text-3xl md:text-4xl font-bold mb-6 md:mb-8">Contato</h2>
-              <p className="text-gray-700 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
+              <h2 className="text-[#FFCC00] text-3xl md:text-4xl mb-6 md:mb-8"
+              style={{ fontFamily: "Futura, sans-serif" }}
+              >Contato</h2>
+             
+              <p className="font-dosis font-medium text-[#0C3729] mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
                 A WeNove está sempre disponível para você. Para dúvidas, sugestões, reclamações e elogios, fale conosco!
               </p>
 
               {/* Contact Icons */}
               <div className="flex justify-center space-x-4 md:space-x-6">
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <Phone className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  <img src="/footer-zap.svg" alt="Facebook" className="w-4 h-4 sm:w-6 sm:h-6" />
                 </div>
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <Mail className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  <img src="/footer-email.svg" alt="Email" className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <MapPin className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  <img src="/footer-instagram.svg" alt="Instagram" className="w-5 h-5 sm:w-7 sm:h-7" />
                 </div>
               </div>
             </div>
