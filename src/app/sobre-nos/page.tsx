@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import HeaderProduto from "@/components/HeaderProduto"
-import { Mail, MapPin, Phone } from "lucide-react"
 import { Menu, X } from "lucide-react"
 import Link from "next/link";
 import { useState } from "react"
