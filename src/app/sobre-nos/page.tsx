@@ -154,6 +154,7 @@ export default function Sobre_nos() {
       <section id="contato" className="px-4 md:px-8 py-12 md:py-16 bg-[#FFF]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+            
             {/* Contact Info */}
             <div className="text-center">
               <h2 className="text-[#FFCC00] text-3xl md:text-4xl mb-6 md:mb-8"

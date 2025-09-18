@@ -7,20 +7,24 @@ export default function WeNoveCadastro() {
   return (
     <div className="min-h-screen bg-[#CED7D4] p-4 md:p-6 flex items-center justify-center">
       <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+        
         {/* Lado esquerdo - Formulário de inscrição */}
         <div className="bg-[#f5f1eb] rounded-3xl p-6 md:p-8 w-full md:max-w-md shadow-lg order-2 md:order-1">
+          
           {/* Logo and Header */}
           <div className="mb-6 lg:mb-8">
+            
             {/* --- SEÇÃO ALTERADA --- */}
             <div className="flex justify-center lg:justify-start-center mb-4 lg:mb-6">
               <Image  
-                src="/logo-vendedor.svg" 
+                src="/Logo-vendedor.svg" 
                 alt="WeNove Logo"
                 width={192}
                 height={50}
                 className="h-10 sm:h-12" 
               />
             </div>
+            
             {/* --- FIM DA SEÇÃO ALTERADA --- */}
 
             <div className="text-center lg:text-left">

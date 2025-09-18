@@ -146,6 +146,7 @@ export default function CadastroProduto() {
         </div>
 
         <div className="space-y-6">
+          
           {/* 1. Informações Básicas */}
           <Card>
             <CardHeader>
