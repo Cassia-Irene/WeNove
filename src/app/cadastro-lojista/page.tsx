@@ -1,6 +1,8 @@
 "use client"
 
-import { useState } from "react"
+
+import Image from "next/image";
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -11,11 +13,27 @@ import Link from "next/link";
 import HeaderVendendor from "@/components/HeaderVendedor"
 
 
-export default function SellerRegistration() {
+export default function CadastroLoja() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [registrationType, setRegistrationType] = useState("fisica")
 
+  const fileInput1 = useRef<HTMLInputElement>(null)
+  const fileInput2 = useRef<HTMLInputElement>(null)
+  const fileInputLogo = useRef<HTMLInputElement>(null)
+
+  const [fileName1, setFileName1] = useState("")
+  const [fileName2, setFileName2] = useState("")
+  const [fileLogoName, setFileLogoName] = useState("")
+
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    setFileName: React.Dispatch<React.SetStateAction<string>>
+  ) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFileName(e.target.files[0].name)
+    }
+  }
 
   const steps = [
     { number: 1, title: "Conta" },
@@ -95,7 +113,7 @@ export default function SellerRegistration() {
                   
                   {/* Header */}
                   <div className="flex items-center justify-between p-6 border-b border-[#FFCC00]/20">
-                    <img src="/Logo-landing.svg" alt="Wenove Logo" className="w-30" />
+                    <Image  src="/Logo-landing.svg" alt="Wenove Logo" className="w-30" />
                     <button
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="w-8 h-8 flex items-center justify-center text-white hover:text-[#FFCC00] transition-colors"
@@ -145,6 +163,7 @@ export default function SellerRegistration() {
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
         {/* Seção de Heróis */}
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#000000] mb-4 text-balance">
@@ -161,9 +180,9 @@ export default function SellerRegistration() {
                 <span
                   className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                     step.number === currentStep
-                      ? "bg-green-500 text-white"
+                      ? "bg-[#E9EFD3] text-[#0C3729]"
                       : step.number < currentStep
-                        ? "bg-green-100 text-green-700"
+                        ? "bg-[#88A51D] text-[#0C3729]"
                         : "bg-gray-200 text-gray-600"
                   }`}
                 >
@@ -172,7 +191,7 @@ export default function SellerRegistration() {
                 <span
                   className={`text-sm sm:text-base ${
                     step.number === currentStep
-                      ? "font-semibold text-gray-900 border-b-2 border-green-500 pb-1"
+                      ? "font-semibold text-gray-900 border-b-2 border-[#88A51D] pb-1"
                       : "text-gray-600"
                   }`}
                 >
@@ -240,6 +259,7 @@ export default function SellerRegistration() {
                 <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">2. Dados Fiscais e Endereço</h2>
 
                 <div className="space-y-6">
+
                   {/* Tipo de registro */}
                   <div className="space-y-3">
                     <Label className="text-sm font-medium text-gray-700">Tipo de cadastro</Label>
@@ -344,7 +364,8 @@ export default function SellerRegistration() {
                     </h3>
 
                     <div className="space-y-4">
-                      {/* CEP e Endereço */}
+
+                    {/* CEP e Endereço */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <div className="flex gap-2">
@@ -387,6 +408,7 @@ export default function SellerRegistration() {
                 </h2>
 
                 <div className="space-y-6">
+
                   {/* Informações bancárias */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
@@ -446,28 +468,24 @@ export default function SellerRegistration() {
 
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
                     {/* Upload de documento 1 */}
-                    <div className="space-y-2">
-                      <Label className="text-sm font-medium text-gray-700">
-                        Documento de Identidade (RG/CPF ou Contrato Social) <span className="text-red-500">*</span>
-                      </Label>
-
-                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer">
+                     <div className="space-y-2">
+                      <Label className="text-sm font-medium text-gray-700">Documento de Identidade (RG/CPF ou Contrato Social) <span className="text-red-500">*</span></Label>
+                      <div onClick={() => fileInput1.current?.click()} className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer max-w-md">
                         <Cloud className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                        <p className="text-gray-500 text-sm">Clique para enviar</p>
-                        <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
+                        <p className="text-gray-500 text-sm">{fileName1 || "Clique para enviar"}</p>
+                        <input ref={fileInput1} type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" onChange={(e) => handleFileChange(e, setFileName1)} />
                       </div>
                     </div>
 
                     {/* Upload de documento 2 */}
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium text-gray-700">
-                        Comprovante de Endereço <span className="text-red-500">*</span>
-                      </Label>
-                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer">
+                      <Label className="text-sm font-medium text-gray-700">Comprovante de Endereço <span className="text-red-500">*</span></Label>
+                      <div onClick={() => fileInput2.current?.click()} className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer max-w-md">
                         <Cloud className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                        <p className="text-gray-500 text-sm">Clique para enviar</p>
-                        <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
+                        <p className="text-gray-500 text-sm">{fileName2 || "Clique para enviar"}</p>
+                        <input ref={fileInput2} type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" onChange={(e) => handleFileChange(e, setFileName2)} />
                       </div>
                     </div>
                   </div>
@@ -475,10 +493,10 @@ export default function SellerRegistration() {
                   {/* Upload de logotipo */}
                   <div className="space-y-2">
                     <Label className="text-sm font-medium text-gray-700">Logotipo da Loja</Label>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer max-w-md">
+                    <div onClick={() => fileInputLogo.current?.click()} className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer max-w-md">
                       <Cloud className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-500 text-sm">Clique para enviar</p>
-                      <input type="file" className="hidden" accept=".jpg,.jpeg,.png,.svg" />
+                      <p className="text-gray-500 text-sm">{fileLogoName || "Clique para enviar"}</p>
+                      <input ref={fileInputLogo} type="file" className="hidden" accept=".jpg,.jpeg,.png,.svg" onChange={(e) => handleFileChange(e, setFileLogoName)} />
                     </div>
                   </div>
                 </div>
@@ -493,6 +511,7 @@ export default function SellerRegistration() {
 
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
                     {/* Categoria principal */}
                     <div className="space-y-2">
                       <Label htmlFor="categoria" className="text-sm font-medium text-gray-700">
@@ -533,7 +552,7 @@ export default function SellerRegistration() {
                     <div className="flex items-start gap-3">
                       <Checkbox id="terms" className="mt-1" />
                       <Label htmlFor="terms" className="text-sm text-gray-700 leading-relaxed cursor-pointer">
-                        Eu li e aceito os <span className="text-green-600 underline">Termos de Uso e Políticas</span> do
+                        Eu li e aceito os <span className="text-[#88A51D] underline">Termos de Uso e Políticas</span> do
                         marketplace.
                       </Label>
                     </div>
@@ -555,13 +574,13 @@ export default function SellerRegistration() {
                 <>
                   <Button
                     variant="outline"
-                    className="bg-green-100 text-green-700 border-green-200 hover:bg-green-200 w-full sm:w-auto order-2 sm:order-1"
+                    className="bg-[#E9EFD3] text-[#0C3729] border-[#E9EFD3] hover:bg-[#88A51D] w-full sm:w-auto order-2 sm:order-1"
                   >
                     Salvar Rascunho
                   </Button>
                   <Button
                     onClick={handleNext}
-                    className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto order-1 sm:order-2"
+                    className="bg-[#0C3729] hover:bg-[#88A51D] text-[#E9EFD3] w-full sm:w-auto order-1 sm:order-2"
                   >
                     Próximo
                   </Button>
@@ -571,11 +590,11 @@ export default function SellerRegistration() {
                   <Button
                     onClick={handlePrevious}
                     variant="outline"
-                    className="bg-green-100 text-green-700 border-green-200 hover:bg-green-200 w-full sm:w-auto order-2 sm:order-1"
+                    className="bg-[#E9EFD3] text-[#0C3729] border-[#E9EFD3] hover:bg-[#88A51D] w-full sm:w-auto order-2 sm:order-1"
                   >
                     Anterior
                   </Button>
-                  <Button className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto order-1 sm:order-2">
+                  <Button className="bg-[#0C3729] hover:bg-[#88A51D] text-[#E9EFD3] w-full sm:w-auto order-1 sm:order-2">
                     Finalizar Cadastro
                   </Button>
                 </>
@@ -584,13 +603,13 @@ export default function SellerRegistration() {
                   <Button
                     onClick={handlePrevious}
                     variant="outline"
-                    className="bg-green-100 text-green-700 border-green-200 hover:bg-green-200 w-full sm:w-auto order-2 sm:order-1"
+                    className="bg-[#E9EFD3] text-[#0C3729] border-[#E9EFD3] hover:bg-[#88A51D]  w-full sm:w-auto order-2 sm:order-1"
                   >
                     Anterior
                   </Button>
                   <Button
                     onClick={handleNext}
-                    className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto order-1 sm:order-2"
+                    className="bg-[#0C3729] hover:bg-[#88A51D] text-[#E9EFD3]  w-full sm:w-auto order-1 sm:order-2"
                   >
                     Próximo
                   </Button>

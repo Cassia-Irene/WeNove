@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -11,26 +12,45 @@ export default function Footer() {
             <div className="sm:col-span-2 lg:col-span-1">
               
               {/* Logo */}
-              <img
+                <Image 
                 src="/Logo-footer.svg"
                 alt="Wenove Logo"
+                width={192}
+                height={50}
                 className="mb-4 sm:mb-6 justify-center mx-auto w-32 sm:w-auto"
-              />
+                />
+              
+              
 
               <p className="text-[#ffffff] font-dosis text-sm sm:text-base text-center mb-4 sm:mb-6 mx-auto max-w-[200px]">© 2025 WeNove. Todos direitos reservados.</p>
               
               <div className="group flex gap-3 sm:gap-4 justify-center">
                 
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-zap.svg" alt="Facebook" className="w-4 h-4 sm:w-6 sm:h-6" />
+                  <Image  
+                  src="/footer-zap.svg" 
+                  alt="Facebook"
+                  width={16}
+                  height={16}
+                  className="sm:w-6 sm:h-6" />
                 </div>
 
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-email.svg" alt="Email" className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <Image  
+                  src="/footer-email.svg" 
+                  alt="Email" 
+                  width={16}
+                  height={16}
+                  className="sm:w-6 sm:h-6" />
                 </div>
 
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[transparent] border-2 border-[#ffcc00] bg-opacity-20 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-[#ffcc00]">
-                  <img src="/footer-instagram.svg" alt="Instagram" className="w-5 h-5 sm:w-7 sm:h-7" />
+                  <Image  
+                  src="/footer-instagram.svg" 
+                  alt="Instagram" 
+                  width={16}
+                  height={16}
+                  className="sm:w-7 sm:h-7" />
                 </div>
               
               </div>
@@ -64,7 +84,7 @@ export default function Footer() {
                 </li>
                 
                 <li>
-                  <Link href="#" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
+                  <Link href="/sobre-nos#contato" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
                     Contato
                   </Link>
                 </li>

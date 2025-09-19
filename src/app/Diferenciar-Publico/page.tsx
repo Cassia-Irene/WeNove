@@ -1,8 +1,10 @@
+import Image from "next/image";
 import { ShoppingBag, Store } from "lucide-react"
 
 export default function DiferenciarPublico() {
   return (
     <div className="min-h-screen bg-[#fff] relative overflow-hidden">
+
       {/* Linhas pontilhadas decorativas */}
       <div className="z-10 absolute top-0 right-0 w-64 h-32">
         <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -33,13 +35,20 @@ export default function DiferenciarPublico() {
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
+
         {/* Logo */}
         <div className="mb-16">
-          <img src="/logo-produto.svg" alt="Logo" className="h-12 w-auto"/>
+          <Image  
+          src="/logo-produto.svg" 
+          alt="Logo" 
+          width={192}
+          height={50}
+          className="h-12 w-auto"/>
         </div>
 
         {/* Conteúdo principal */}
         <div className="max-w-4xl mx-auto text-center">
+
           {/* Título principal */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-regular text-[#0C3729] mb-8 text-balance"style={{ fontFamily: "Futura, sans-serif" }}>
             Como você quer participar da Wenove?
@@ -53,6 +62,7 @@ export default function DiferenciarPublico() {
 
           {/* Cartões */}
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            
             {/* Cartão do Consumidor */}
             <div className="bg-white rounded-3xl border-4 border-green-500 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6">

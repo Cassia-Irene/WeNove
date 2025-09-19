@@ -1,7 +1,7 @@
 "use client"
 
+import Image from "next/image";
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -75,7 +75,7 @@ export default function CadastroProduto() {
                   
                   {/* Header */}
                   <div className="flex items-center justify-between p-6 border-b border-[#FFCC00]/20">
-                    <img src="/Logo-landing.svg" alt="Wenove Logo" className="w-30" />
+                    <Image  src="/Logo-landing.svg" alt="Wenove Logo" className="w-30" />
                     <button
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="w-8 h-8 flex items-center justify-center text-white hover:text-[#FFCC00] transition-colors"
@@ -146,6 +146,7 @@ export default function CadastroProduto() {
         </div>
 
         <div className="space-y-6">
+          
           {/* 1. Informações Básicas */}
           <Card>
             <CardHeader>
@@ -247,7 +248,7 @@ export default function CadastroProduto() {
                   <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                     {uploadedImages.map((image, index) => (
                       <div key={index} className="relative group">
-                        <img
+                        <Image 
                           src={URL.createObjectURL(image) || "/placeholder.svg"}
                           alt={`Upload ${index + 1}`}
                           className="w-full h-24 object-cover rounded-lg border"

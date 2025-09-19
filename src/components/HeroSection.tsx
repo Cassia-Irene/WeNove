@@ -61,7 +61,7 @@ export default function HeroSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-6 lg:gap-10 justify-center items-center">
-          <Button className="bg-[#8f3332] text-white hover:bg-[#8b3130] px-6 sm:px-8 lg:px-9 py-5 sm:py-5 lg:py-6 font-dosis text-base sm:text-lg font-medium w-full sm:w-auto"
+          <Button className="bg-[#8f3332] text-white hover:bg-[#8b3130] px-6 sm:px-8 lg:px-9 py-5 sm:py-5 lg:py-6 font-dosis text-base sm:text-lg font-medium w-full sm:w-auto cursor-pointer"
           
           onClick={() =>
             document.getElementById("funcionamento")?.scrollIntoView({ behavior: "smooth" })
