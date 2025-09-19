@@ -73,7 +73,7 @@ export default function HeroSection() {
           <Button className="bg-[#88a51d] text-white hover:bg-[#708943] px-6 sm:px-7 lg:px-9 py-5 sm:py-5 lg:py-6 font-dosis text-base sm:text-lg font-medium w-full sm:w-auto"
           >
             
-            <Link href="/Cadastro">Faça seu Cadastro</Link>
+            <Link href="/cadastro">Faça seu Cadastro</Link>
           </Button>
         </div>
       </div>

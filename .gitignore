@@ -16,6 +16,8 @@
 # next.js
 /.next/
 /out/
+.history
+./history
 
 # production
 /build
@@ -39,3 +41,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ides
+.idea
+.netbeans
+.nvim
+.trae
+.vscode
+.cursor
+.flyte
+.flite
+
+/.idea
+/.netbeans
+/.nvim
+/.trae
+/.vscode
+/.cursor
+/.flyte
+/.flite

@@ -34,11 +34,6 @@ export default function WeNoveCadastro() {
             />
 
             <Input
-              placeholder="Sobrenome"
-              className="bg-transparent border-2 border-[#0c3729] rounded-xl px-4 py-3 text-[#0c3729] font-dosis placeholder:text-[#0c3729]/70"
-            />
-
-            <Input
               type="email"
               placeholder="Email"
               className="bg-transparent border-2 border-[#0c3729] rounded-xl px-4 py-3 text-[#0c3729] font-dosis placeholder:text-[#0c3729]/70"
