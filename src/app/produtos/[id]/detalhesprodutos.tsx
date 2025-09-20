@@ -15,16 +15,21 @@ export default function DetalhesProdutos({ product }: Props) {
   const [selectedImage, setSelectedImage] = useState<number>(0)
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-18 sm:py-8 lg:py-40 xl:py-40 ">
       
-      {/* Product Title */}
-      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0c3729] mb-8 sm:mb-8">
-        {product.name}
-      </h1>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-        {/* Product Images */}
+
         <div className="lg:col-span-2">
+      
+          {/* Product Title */}
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl text-[#0c3729] mb-4"
+          style={{ fontFamily: "Futura, sans-serif" }}
+          >
+            {product.name}
+          </h1>
+
+          {/* Product Images */}
+        
           {/* Main Image */}
           <div className="bg-white rounded-lg p-4 mb-4">
             <Image
