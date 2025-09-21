@@ -16,10 +16,11 @@ const getProductData = (id: number) => {
     quantity: 1,
     availableQuantity: Math.floor(Math.random() * 20) + 5,
     images: [baseProduct.image, baseProduct.image, baseProduct.image, baseProduct.image],
-    description: `${baseProduct.name} — sustentável e exclusiva, feita com retalhos reaproveitados, unindo design moderno e consumo consciente.`,
+    description: `Este produto foi desenvolvido com foco em sustentabilidade, qualidade e design exclusivo. Produzido a partir de materiais reaproveitados, oferece conforto, durabilidade e um impacto ambiental reduzido. Cada peça é única, resultado de um processo que valoriza a economia circular e o consumo consciente.`,
+    description_compra: `${baseProduct.name} — sustentável e exclusiva, feita com retalhos reaproveitados, unindo design moderno e consumo consciente.`,
     seller: {
       name: baseProduct.seller,
-      role: "Moda Upcycle",
+      role: "Artesã Upcycle",
       avatar: baseProduct.sellerAvatar,
       description: `Transformo retalhos esquecidos em peças exclusivas, unindo criatividade, moda e sustentabilidade.`,
     },

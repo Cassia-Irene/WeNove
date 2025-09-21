@@ -32,6 +32,7 @@ export interface Product {
   availableQuantity: number
   images: string[]
   description: string
+  description_compra: string
   seller: Seller
   details: {
     material: string
