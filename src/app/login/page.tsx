@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
 import Image from "next/image"
 
 function LoginPage() {
@@ -84,10 +85,10 @@ function LoginPage() {
           {/* Login Button */}
           <Button
             type="submit"
-            className="w-full bg-[#88A51D] hover:bg-[#0C3729] text-white font-dosis font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg mt-4 sm:mt-6"
+            className="w-full bg-[#88A51D] hover:bg-[#0C3729] text-white font-dosis font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg mt-4 sm:mt-6 cursor-pointer"
             disabled={!agreed}
           >
-            Faça login
+            <Link href="/">Faça login</Link>
           </Button>
         </form>
       </CardContent>
