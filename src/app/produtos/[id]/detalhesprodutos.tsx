@@ -512,13 +512,18 @@ export default function DetalhesProdutos({ product }: Props) {
                   alt={product.seller.name}
                   width={50}
                   height={50}
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover"
-                  
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full object-cover flex-shrink-0"
                 />
-                <div>
-                  <h4 className="font-bold text-[#0c3729]">{product.seller.name}</h4>
-                  <p className="text-sm text-gray-600">{product.seller.role}</p>
-                  <p className="text-xs sm:text-sm text-gray-600 mt-2">{product.seller.description}</p>
+                <div className="flex-1 min-w-0">
+                  
+                  <h4
+                    className="text-[#88A51D] text-base sm:text-lg lg:text-xl xl:text-2xl truncate"
+                    style={{ fontFamily: "Futura, sans-serif" }}
+                  >
+                    {product.seller.name}
+                  </h4>
+
+                  <p className="text-xs sm:text-sm lg:text-base lg:font-semibold font-dosis text-[#8F3332]">{product.seller.role}</p>
                 </div>
               </div>
 
