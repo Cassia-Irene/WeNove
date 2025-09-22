@@ -24,7 +24,7 @@ export default function Sobre_nos() {
           <Menu className="w-6 h-6 text-white drop-shadow-md" />
         </button>
 
-      {/* Menu do celular */}
+        {/* Menu do celular */}
             {isMobileMenuOpen && (
               <div className="fixed inset-0 z-50 sm:hidden">
                 
