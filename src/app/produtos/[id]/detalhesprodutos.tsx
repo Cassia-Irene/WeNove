@@ -146,6 +146,7 @@ export default function DetalhesProdutos({ product }: Props) {
                   width={50}
                   height={50}
                   className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover"
+                  
                 />
                 <div>
                   <h4 className="font-bold text-[#0c3729]">{product.seller.name}</h4>

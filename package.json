@@ -45,6 +45,7 @@
     "geist": "^1.5.1",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
+    "next-auth": "^4.24.11",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-intersection-observer": "^9.16.0",
