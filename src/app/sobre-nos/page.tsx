@@ -91,7 +91,7 @@ export default function Sobre_nos() {
                       className="w-full h-12 bg-[#FFCC00] hover:bg-[#FFDE59] text-[#0C3729] font-dosis font-semibold text-lg rounded-full shadow-lg transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <Link href="/Diferenciar-Publico">Sou Wenove</Link>
+                      <Link href="/diferenciar-publico">Sou Wenove</Link>
                     </Button>
                   </div>
 

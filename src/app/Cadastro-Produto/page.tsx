@@ -75,7 +75,12 @@ export default function CadastroProduto() {
                   
                   {/* Header */}
                   <div className="flex items-center justify-between p-6 border-b border-[#FFCC00]/20">
-                    <Image  src="/Logo-landing.svg" alt="Wenove Logo" className="w-30" />
+                    <Image 
+                    src="/Logo-landing.svg" 
+                    alt="Wenove Logo"
+                    height={30} 
+                    width={30}
+                    className="w-30" />
                     <button
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="w-8 h-8 flex items-center justify-center text-white hover:text-[#FFCC00] transition-colors"
