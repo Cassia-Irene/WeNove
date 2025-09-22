@@ -100,30 +100,45 @@ export default function Sobre_nos() {
             )}
 
         {/* Hero Section */}
-        <section className="relative w-full h-screen overflow-hidden flex items-center justify-center">
+          <section className="relative w-full overflow-hidden flex flex-col items-center justify-start pt-0 pb-0">
+            <div className="relative w-full max-w-full h-auto flex-shrink-0 xl:hidden">
+              <Image
+                src={"/img-sobre-nos.png"}
+                alt="Sobre Nós"
+                width={5257}
+                height={3198}
+                className="w-full h-auto max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] lg:max-h-screen object-contain xl:w-screen"
+                priority
+                sizes="(max-width: 1280px) 100vw, 100vw"
+              />
+            </div>
+            {/* Overlay escuro - aplicado apenas sobre a imagem */}
+            <div className="absolute inset-0 bg-black/40 w-full h-full max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] lg:max-h-screen" />
+            {/* Conteúdo central opcional - posicionado sobre a imagem */}
+            <div className="absolute z-10 text-white text-center top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 xl:left-1/2 xl:w-screen">
+              <h1 className="text-2xl md:text-5xl lg:text-6xl"
+              style={{ fontFamily: "Futura, sans-serif" }}
+              >Sobre Nós</h1>
+            </div>
+          </section>
 
-          <div className="absolute inset-0">
-            <Image
-              src={"/img-sobre-nos.png"}
-              alt="Sobre Nós"
-              fill
-              className="object-contain sm:object-cover md:object-contain lg:object-cover object-center"
-            />
-              
-          </div>
-        
-        {/* Overlay escuro */}
-          <div className="absolute h-full inset-0 bg-black/40" />
-
-        {/* Conteúdo central opcional */}
-          <div className="relative top-[10%] z-10 text-white text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-7xl"
-            style={{ fontFamily: "Futura, sans-serif" }}
-            >Sobre Nós</h1>
-          </div>
-
-        </section>
-
+          <section className="hidden xl:block relative w-full h-screen overflow-hidden">
+              <Image
+                src="/img-sobre-nos.png"
+                alt="Sobre Nós"
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute z-10 text-white text-center top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <h1 className="text-8xl" style={{ fontFamily: "Futura, sans-serif" }}>
+                  Sobre Nós
+                </h1>
+              </div>
+          </section>
+          
 
       {/* Main Content */}
 
@@ -151,9 +166,9 @@ export default function Sobre_nos() {
       </main>
 
       {/* Contact Section */}
-      <section id="contato" className="px-4 md:px-8 py-12 md:py-16 bg-[#FFF]">
+      <section id="contato" className="px-4 md:px-8 py-4 lg:p-8 bg-[#FFF]">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 mb-6 sm:mb-8 lg:mb-10 items-center">
             
             {/* Contact Info */}
             <div className="text-center">

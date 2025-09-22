@@ -34,16 +34,17 @@ export default function HeaderVendedor() {
           </nav>
         </div>
 
-        {/* Carrinho + Usuário */}
+        {/* Usuário */}
             <div className="absolute top-6 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px] flex items-center space-x-3 sm:space-x-5 lg:space-x-7">
-                
-                <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center shadow-user">
+                <Link href="/perfil-lojista-editavel">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center shadow-user">
                   <Image 
                   src="/usuario-foto.png" 
                   alt="Foto do usuário"
                   fill
                   className="w-full h-full rounded-full object-cover"/>
                 </div>
+                </Link>
             </div>
         </header>
     </div>
