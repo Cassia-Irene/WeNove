@@ -75,7 +75,7 @@ function LoginPage() {
               className="mt-0.5 sm:mt-1 border-2 border-gray-400 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600 flex-shrink-0"
             />
             <label htmlFor="terms" className="text-xs sm:text-sm font-dosis text-[#8B3130] leading-relaxed">
-              Ao clicar em "Faça login", você concorda com os{" "}
+              Ao clicar em &quot;Faça login&quot;, você concorda com os{" "}
               <span className="text-[#0C3729] underline cursor-pointer">Termos de Serviço</span> e a{" "}
               <span className="text-[#0C3729] underline cursor-pointer">Política de Privacidade</span> da WeNove.
             </label>

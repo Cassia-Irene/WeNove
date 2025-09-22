@@ -226,7 +226,7 @@ export default function CadastroProduto() {
             <CardContent className="space-y-4">
               <div>
                 <Label>Imagens do Produto *</Label>
-                <div className="mt-2">
+                <div className="mt-2 ">
                   <input
                     type="file"
                     multiple
@@ -238,7 +238,7 @@ export default function CadastroProduto() {
                   />
                   <label
                     htmlFor="image-upload"
-                    className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors cursor-pointer block"
+                    className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-green-400 transition-colors cursor-pointer block"
                   >
                     <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                     <p className="text-gray-600 mb-2">Arraste as imagens aqui ou clique para selecionar</p>
@@ -312,7 +312,7 @@ export default function CadastroProduto() {
           </Card>
 
           {/* 4. Entrega e Frete */}
-          <Card>
+          {/*<Card>
             <CardHeader>
               <CardTitle className="text-lg font-semibold">4. Entrega e Frete</CardTitle>
             </CardHeader>
@@ -335,12 +335,12 @@ export default function CadastroProduto() {
                 </div>
               </div>
             </CardContent>
-          </Card>
+          </Card>*/}
 
           {/* 5. Variações */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg font-semibold">5. Variações</CardTitle>
+              <CardTitle className="text-lg font-semibold">4. Variações</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-gray-600">
@@ -404,7 +404,7 @@ export default function CadastroProduto() {
           {/* 6. Regras e Políticas */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg font-semibold">6. Regras e Políticas</CardTitle>
+              <CardTitle className="text-lg font-semibold">5. Regras e Políticas</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
