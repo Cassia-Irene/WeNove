@@ -60,7 +60,7 @@ export default function WenoveLanding() {
           {/* Botão - Oculto no celular, visível no tablet+ */}
             <div className="hidden sm:block">
               <Link
-                href="/diferenciar-publico"
+                href="/login"
                 className="
                 absolute top-4 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px]
                 w-[120px] sm:w-[140px] lg:w-[150px] h-[40px] lg:h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59]
@@ -143,7 +143,7 @@ export default function WenoveLanding() {
                       className="w-full h-12 bg-[#FFCC00] hover:bg-[#FFDE59] text-[#0C3729] font-dosis font-semibold text-lg rounded-full shadow-lg transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <Link href="/diferenciar-publico">Sou Wenove</Link>
+                      <Link href="/login">Sou Wenove</Link>
                     </Button>
                   </div>
                 </div>

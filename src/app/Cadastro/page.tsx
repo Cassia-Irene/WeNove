@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
+import Link from "next/link";
 
 export default function WeNoveCadastro() {
   return (
@@ -28,7 +29,7 @@ export default function WeNoveCadastro() {
             {/* --- FIM DA SEÇÃO ALTERADA --- */}
 
             <div className="text-center lg:text-left">
-              <h2 className="text-center text-2xl sm:text-3xl lg:text-5xl font-bold text-[#88a51d] mb-2"style={{ fontFamily: "Futura, sans-serif" }}>Bem-Vindo!</h2>
+              <h2 className="text-center text-2xl sm:text-3xl lg:text-5xl text-[#88a51d] mb-2" style={{ fontFamily: "Futura, sans-serif" }}>Bem-Vindo!</h2>
               <p className="text-center text-[#8b3130] font-dosis-medium text-sm sm:text-2xl ">Cadastre-se na WeNove</p>
             </div>
           </div>
@@ -65,9 +66,10 @@ export default function WeNoveCadastro() {
                 className="mt-1 bg-transparent border-[#88a51d] data-[state=checked]:bg-[#88a51d] data-[state=checked]:border-[#88a51d] flex-shrink-0"
               />
               <label htmlFor="terms" className="text-xs text-[#0c3729] font-dosis leading-relaxed">
-                Ao clicar em &quot;inscrever-se&quot;, você concorda com os da WeNove{" "}
+                Ao clicar em &quot;inscrever-se&quot;, você concorda com os {" "}
                 <span className="underline">Termos de Serviço</span> e a{" "}
-                <span className="underline">Política de Privacidade</span>
+                <span className="underline">Política de Privacidade </span>
+                da WeNove.
               </label>
             </div>
 
@@ -76,7 +78,7 @@ export default function WeNoveCadastro() {
               type="submit"
               className="w-full bg-[#88a51d] hover:bg-[#256609] text-white font-dosis-semibold py-3 rounded-xl mt-4 md:mt-6"
             >
-              Inscreva-se
+              <Link href="/diferenciar-publico">Inscreva-se</Link>
             </Button>
           </form>
         </div>

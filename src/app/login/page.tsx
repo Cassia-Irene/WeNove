@@ -1,113 +1,104 @@
 "use client"
 
-import { useSession, signOut } from "next-auth/react"
+import type React from "react"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { Input } from "@/components/ui/input"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
 
-export default function DashboardPage() {
-  const { data: session, status } = useSession()
-  const router = useRouter()
+function LoginPage() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [agreed, setAgreed] = useState(false)
 
-  useEffect(() => {
-    if (status === "loading") return // Still loading
-    if (!session) router.push("/") // Not authenticated, redirect to login
-  }, [session, status, router])
-
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#ced7d4" }}>
-        <div className="text-center">
-          <div
-            className="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto mb-4"
-            style={{ borderColor: "#88a51d" }}
-          ></div>
-          <p style={{ color: "#1c1c1c" }}>Carregando...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (!session) {
-    return null // Will redirect
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle login logic here
+    console.log("Login attempt:", { email, password, agreed })
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#ced7d4" }}>
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8" style={{ backgroundColor: "#f0edff" }}>
-            {/* Header */}
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: "#8b3130" }}
-                >
-                  <div className="w-6 h-6 rounded-full border-2 border-white relative">
-                    <div className="absolute top-0.5 left-0.5 w-1.5 h-1.5 bg-white rounded-full"></div>
-                    <div className="absolute bottom-0.5 right-0.5 w-1 h-1 bg-white rounded-full"></div>
-                  </div>
-                </div>
-                <h1 className="text-xl font-bold" style={{ color: "#8b3130" }}>
-                  WeMove
-                </h1>
-              </div>
-              <Button
-                onClick={() => signOut({ callbackUrl: "/" })}
-                variant="outline"
-                className="border-2"
-                style={{ borderColor: "#8b3130", color: "#8b3130" }}
-              >
-                Sair
-              </Button>
-            </div>
-
-            {/* Welcome Message */}
-            <div className="text-center mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4" style={{ color: "#88a51d" }}>
-                Bem-vindo!
-              </h2>
-              <div className="flex items-center justify-center gap-4 mb-4">
-                {session.user?.image && (
-                  <img
-                    src={session.user.image || "/placeholder.svg"}
-                    alt="Profile"
-                    className="w-16 h-16 rounded-full border-2"
-                    style={{ borderColor: "#88a51d" }}
-                  />
-                )}
-                <div className="text-left">
-                  <p className="font-semibold text-lg" style={{ color: "#1c1c1c" }}>
-                    {session.user?.name}
-                  </p>
-                  <p className="text-sm" style={{ color: "#8b3130" }}>
-                    {session.user?.email}
-                  </p>
-                </div>
-              </div>
-              <p className="text-sm" style={{ color: "#1c1c1c" }}>
-                Você fez login com sucesso usando o Google!
-              </p>
-            </div>
-
-            {/* Dashboard Content */}
-            <div className="grid gap-4 sm:gap-6">
-              <div
-                className="p-4 rounded-lg border-2"
-                style={{ borderColor: "#88a51d", backgroundColor: "rgba(136, 165, 29, 0.1)" }}
-              >
-                <h3 className="font-semibold mb-2" style={{ color: "#88a51d" }}>
-                  Dashboard
-                </h3>
-                <p className="text-sm" style={{ color: "#1c1c1c" }}>
-                  Esta é sua área principal. Aqui você pode gerenciar suas atividades e configurações.
-                </p>
-              </div>
-            </div>
+    <Card className="w-full max-w-sm sm:max-w-md bg-[#EFE8DC] border-0 shadow-lg">
+      <CardContent className="p-4 sm:p-6 lg:p-8">
+        {/* Logo and Brand */}
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex items-center justify-center mb-3 sm:mb-4">
+               <Image  
+                src="/Logo-vendedor.svg" 
+                alt="WeNove Logo"
+                width={192}
+                height={50}
+                className="h-10 sm:h-12" 
+                />
           </div>
         </div>
-      </div>
+
+        {/* Login Header */}
+        <div className="text-center mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl text-[#88A51D] mb-2" style={{ fontFamily: "Futura, sans-serif" }} >Login</h2>
+          <p className="text-sm sm:text-base font-dosis text-[#8B3130]">Entre na sua conta</p>
+        </div>
+
+        {/* Login Form */}
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+          <div>
+            <Input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-3 py-2 sm:px-4 sm:py-3 border-2 border-gray-400 rounded-lg bg-transparent font-dosis placeholder:text-[#0C3729] focus:border-green-600 focus:ring-0 text-sm sm:text-base"
+              required
+            />
+          </div>
+
+          <div>
+            <Input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 sm:px-4 sm:py-3 border-2 border-gray-400 rounded-lg bg-transparent font-dosis placeholder:text-[#0C3729] focus:border-green-600 focus:ring-0 text-sm sm:text-base"
+              required
+            />
+          </div>
+
+          {/* Terms Agreement */}
+          <div className="flex items-start space-x-2 sm:space-x-3 py-2">
+            <Checkbox
+              id="terms"
+              checked={agreed}
+              onCheckedChange={(checked) => setAgreed(checked as boolean)}
+              className="mt-0.5 sm:mt-1 border-2 border-gray-400 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600 flex-shrink-0"
+            />
+            <label htmlFor="terms" className="text-xs sm:text-sm font-dosis text-[#8B3130] leading-relaxed">
+              Ao clicar em "Faça login", você concorda com os{" "}
+              <span className="text-[#0C3729] underline cursor-pointer">Termos de Serviço</span> e a{" "}
+              <span className="text-[#0C3729] underline cursor-pointer">Política de Privacidade</span> da WeNove.
+            </label>
+          </div>
+
+          {/* Login Button */}
+          <Button
+            type="submit"
+            className="w-full bg-[#88A51D] hover:bg-[#0C3729] text-white font-dosis font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg mt-4 sm:mt-6"
+            disabled={!agreed}
+          >
+            Faça login
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
+
+export default function Home() {
+  return (
+    <div className="min-h-screen flex items-center justify-center px-4 py-8" style={{ backgroundColor: "#CED7D4" }}>
+      <LoginPage />
     </div>
   )
 }
