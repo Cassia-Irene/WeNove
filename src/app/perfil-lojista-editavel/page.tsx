@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { ShoppingCart, Instagram, Facebook, Mail, ChevronLeft, Edit } from "lucide-react"
+import { Instagram, Facebook, Mail, ChevronLeft, Edit } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Image from "next/image"
