@@ -99,66 +99,74 @@ export default function Sobre_nos() {
               </div>
             )}
 
-        {/* Hero Section */}
-          <section className="relative w-full overflow-hidden flex flex-col items-center justify-start pt-0 pb-0">
-            <div className="relative w-full max-w-full h-auto flex-shrink-0 xl:hidden">
-              <Image
-                src={"/img-sobre-nos.png"}
-                alt="Sobre Nós"
-                width={5257}
-                height={3198}
-                className="w-full h-auto max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] lg:max-h-screen object-contain xl:w-screen"
-                priority
-                sizes="(max-width: 1280px) 100vw, 100vw"
-              />
-            </div>
-            {/* Overlay escuro - aplicado apenas sobre a imagem */}
-            <div className="absolute inset-0 bg-black/40 w-full h-full max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] lg:max-h-screen" />
-            {/* Conteúdo central opcional - posicionado sobre a imagem */}
-            <div className="absolute z-10 text-white text-center top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 xl:left-1/2 xl:w-screen">
-              <h1 className="text-2xl md:text-5xl lg:text-6xl"
-              style={{ fontFamily: "Futura, sans-serif" }}
-              >Sobre Nós</h1>
-            </div>
-          </section>
+        {/* Hero Section para telas menores de 1280px */}
+        <section className="relative w-full overflow-hidden flex flex-col items-center justify-center pt-0 pb-0">
 
-          <section className="hidden xl:block relative w-full h-screen overflow-hidden">
-              <Image
-                src="/img-sobre-nos.png"
-                alt="Sobre Nós"
-                fill
-                className="object-cover"
-                priority
-                sizes="100vw"
-              />
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute z-10 text-white text-center top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <h1 className="text-8xl" style={{ fontFamily: "Futura, sans-serif" }}>
-                  Sobre Nós
-                </h1>
-              </div>
-          </section>
-          
+          <div className="relative w-full max-w-full h-auto flex-shrink-0 xl:hidden animate-fade-in">
+            <Image
+              src={"/img-sobre-nos.png"}
+              alt="Sobre Nós"
+              width={5257}
+              height={3198}
+              className="w-full h-auto max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] lg:max-h-screen object-contain xl:w-screen"
+              priority
+              sizes="(max-width: 1280px) 100vw, 100vw"
+            />
+          </div>
+        
+        {/* Overlay escuro */}
+          <div className="absolute inset-0 bg-black/40 w-full h-full max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] lg:max-h-screen animate-fade-in animate-delay-300" />
+
+        {/* Conteúdo central opcional */}
+          <div className="absolute z-10 text-white text-center top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 xl:left-1/2 xl:w-screen animate-slide-up animate-delay-500">
+            <h1 className="text-2xl md:text-5xl lg:text-6xl hover:scale-105 transition-transform duration-300"
+            style={{ fontFamily: "Futura, sans-serif" }}
+            >Sobre Nós</h1>
+          </div>
+        </section>
+        
+        {/* Hero Section para telas maiores 1280px */}
+        <section className="hidden xl:block relative w-full h-screen overflow-hidden">
+          <Image
+            src={"/img-sobre-nos.png"}
+            alt="Sobre Nós"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+
+          {/* Overlay escuro */}
+          <div className="absolute inset-0 bg-black/40 animate-fade-in animate-delay-300" />
+
+          {/* Conteúdo central opcional */}
+          <div className="absolute z-10 text-white text-center top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-slide-up animate-delay-500">
+            <h1 className="text-8xl hover:scale-105 transition-transform duration-300"
+            style={{ fontFamily: "Futura, sans-serif" }}
+            >Sobre Nós</h1>
+          </div>
+        </section>
+
 
       {/* Main Content */}
 
       <div className="bg-[#FFF]">
-        <main className="px-4 md:px-8 py-12 md:py-16 max-w-4xl mx-auto">
+        <main className="px-4 md:px-8 py-12 md:py-16 max-w-4xl mx-auto animate-fade-in animate-delay-700">
         <div className="font-dosis space-y-6 leading-relaxed text-justify text-center">
-          <p className="text-sm md:text-base">
+          <p className="text-sm md:text-base animate-slide-up animate-delay-800 hover:text-[#0C3729] transition-colors duration-300">
             Nós somos estudantes de tecnologia do Centro Universitário Dom Bosco (UNDB) de São Luís - MA. Para nós, a
             sustentabilidade não deve ser apenas uma meta, mas também um compromisso diário. Motivados a aplicar o que
             aprendemos para construir um futuro mais sustentável, criamos a WeNove: uma startup maranhense dedicada a
             transformar a maneira como a moda é consumida.
           </p>
 
-          <p className="text-sm md:text-base">
+          <p className="text-sm md:text-base animate-slide-up animate-delay-900 hover:text-[#0C3729] transition-colors duration-300">
             Nosso propósito é aproximar pessoas comuns da sustentabilidade, de forma que ela deixe de ser algo futuro e
             passe a estar cada vez mais presente no cotidiano de todos. No contexto atual de fast fashion,{" "}
             <strong>nós acreditamos que cada peça de roupa tem valor e pode ter uma nova vida nas mãos certas</strong>.
           </p>
 
-          <p className="text-sm md:text-base">
+          <p className="text-sm md:text-base animate-slide-up animate-delay-1000 hover:text-[#0C3729] transition-colors duration-300">
             Desse modo, ao tornar a moda sustentável mais acessível e prática, esperamos contribuir para a redução do
             impacto ambiental do lixo têxtil, transformando o que seria desperdício em oportunidade.
           </p>
@@ -166,23 +174,23 @@ export default function Sobre_nos() {
       </main>
 
       {/* Contact Section */}
-      <section id="contato" className="px-4 md:px-8 py-4 lg:p-8 bg-[#FFF]">
+      <section id="contato" className="px-4 md:px-8 py-12 md:py-16 bg-[#FFF] animate-fade-in animate-delay-1100">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-16 mb-6 sm:mb-8 lg:mb-10 items-center">
             
             {/* Contact Info */}
-            <div className="text-center">
-              <h2 className="text-[#FFCC00] text-3xl md:text-4xl mb-6 md:mb-8"
+            <div className="text-center animate-slide-up animate-delay-1200">
+              <h2 className="text-[#FFCC00] text-3xl md:text-4xl mb-6 md:mb-8 hover:scale-105 transition-transform duration-300"
               style={{ fontFamily: "Futura, sans-serif" }}
               >Contato</h2>
              
-              <p className="font-dosis font-medium text-[#0C3729] mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
+              <p className="font-dosis font-medium text-[#0C3729] mb-6 md:mb-8 leading-relaxed text-sm md:text-base animate-slide-up animate-delay-1300">
                 A WeNove está sempre disponível para você. Para dúvidas, sugestões, reclamações e elogios, fale conosco!
               </p>
 
               {/* Contact Icons */}
-              <div className="flex justify-center space-x-4 md:space-x-6">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+              <div className="flex justify-center space-x-4 md:space-x-6 animate-scale-in animate-delay-1400">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
                   <Image  
                   src="/footer-zap.svg" 
                   alt="Facebook"
@@ -191,7 +199,7 @@ export default function Sobre_nos() {
                   className="sm:w-6 sm:h-6" />
                 </div>
                 
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
                   <Image  
                   src="/footer-email.svg" 
                   alt="Email" 
@@ -200,7 +208,7 @@ export default function Sobre_nos() {
                   className="sm:w-6 sm:h-6" />
                 </div>
                 
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-400 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200">
                   <Image  
                   src="/footer-instagram.svg" 
                   alt="Instagram" 

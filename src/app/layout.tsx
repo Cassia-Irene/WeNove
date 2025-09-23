@@ -1,21 +1,22 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+"use client";
+
+import { Inter, Dosis } from "next/font/google";
 import "./globals.css";
-import Footer from "../components/Footer";
+import Footer from "@/components/Footer";
+import { UserProvider } from "@/contexts/UserContext";
+import Head from "next/head";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dosis = Dosis({
+  variable: "--font-dosis",
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "WeNove",
-};
+// Metadata moved to head tag since this is now a client component
 
 export default function RootLayout({
   children,
@@ -25,21 +26,20 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-
-        <link rel="icon" href="/Logo-wenove.svg" />
-
+        <title>WeNove - Dando um novo propósito às suas roupas</title>
+        <meta name="description" content="Transformamos roupas usadas em novos produtos de valor através de coleta, triagem e reaproveitamento sustentável." />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
-
-
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${dosis.variable} antialiased`}
       >
-        {children}
-        <Footer />
+        <UserProvider>
+          {children}
+          <Footer />
+        </UserProvider>
       </body>
     </html>
   );

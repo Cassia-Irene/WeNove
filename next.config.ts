@@ -5,3 +5,14 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// allow example.com and imgur.com images
+module.exports = {
+  images: {
+    remotePatterns: [
+      new URL('https://example.com/images/**'),
+      new URL('https://imgur.com/**'),
+      new URL('https://example.com'),
+    ],
+  },
+}
