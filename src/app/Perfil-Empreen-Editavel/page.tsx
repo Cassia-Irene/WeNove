@@ -4,11 +4,13 @@ import type React from "react"
 
 import { ShoppingCart, Instagram, Facebook, Mail, ChevronLeft, Edit } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+// Avatar components removed - using Image component instead
 import Image from "next/image"
 import { useState, useRef } from "react"
+import { useUser } from "@/contexts/UserContext"
 
 export default function WeNoveProfile() {
+  const { user, avatarUrl } = useUser();
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -199,21 +201,20 @@ export default function WeNoveProfile() {
 
         {/* Profile Section */}
         <section className="bg-white rounded-lg shadow-md p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 mb-12 border border-gray-200">
-          <div className="relative cursor-pointer group" onClick={() => fileInputRef.current?.click()}>
-            <Avatar className="w-36 h-36">
-              <AvatarImage src={profileData.profileImage || "/placeholder.svg"} />
-              <AvatarFallback>Ana</AvatarFallback>
-            </Avatar>
-            <div className="absolute bottom-2 right-2 bg-white rounded-full p-1 shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
-              <Edit className="h-4 w-4 text-gray-600" />
+          <div className="relative">
+            <div className="w-36 h-36 rounded-full overflow-hidden">
+              <Image
+                src={avatarUrl || "/placeholder.svg"}
+                alt={user?.name || 'User'}
+                width={144}
+                height={144}
+                className="w-full h-full object-cover"
+                unoptimized={true}
+              />
             </div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleProfileImageChange}
-              className="hidden"
-            />
+            <div className="absolute bottom-2 right-2 bg-white rounded-full p-2 shadow-md">
+              <div className="w-4 h-4 bg-green-500 rounded-full" title="Avatar gerado automaticamente" />
+            </div>
           </div>
 
           <div className="flex-1 w-full">

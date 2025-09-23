@@ -1,6 +1,8 @@
 import { ShoppingCart, Instagram, Facebook, Mail, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { useUser } from "@/contexts/UserContext"
+import Image from "next/image"
 
 const products = [
   {
@@ -101,6 +103,7 @@ const getProductData = (id: number) => {
 }
 
 export default function WeNovePage() {
+  const { user, avatarUrl } = useUser();
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 md:px-6 py-8">
@@ -108,15 +111,18 @@ export default function WeNovePage() {
         <div className="bg-[#e6e3d6] rounded-2xl p-4 md:p-8 mb-12 shadow-sm">
           <div className="flex flex-col md:flex-row items-start gap-6">
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
-              <img
-                src="/smiling-woman-with-dark-hair-professional-photo.jpg"
-                alt="Ana Luiza"
+              <Image
+                src={avatarUrl || "/smiling-woman-with-dark-hair-professional-photo.jpg"}
+                alt={user?.name || "Ana Luiza"}
+                width={96}
+                height={96}
                 className="w-full h-full object-cover"
+                unoptimized={true}
               />
             </div>
 
             <div className="flex-1 text-center md:text-left">
-              <h1 className="text-[#0c3729] text-2xl md:text-3xl font-bold mb-2">Ana Luiza</h1>
+              <h1 className="text-[#0c3729] text-2xl md:text-3xl font-bold mb-2">{user?.name || "Ana Luiza"}</h1>
               <p className="text-[#88a51d] text-lg font-medium mb-4">Artesã Upcycle</p>
               <p className="text-[#993f3c] text-sm leading-relaxed">
                 Para mim, um retalho de jeans não é o fim, é o começo, apaixonada por dar uma nova vida ao que seria
