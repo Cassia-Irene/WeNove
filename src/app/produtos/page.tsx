@@ -134,8 +134,9 @@ export default function ProdutosPage() {
       const matchesMaterial =
         selectedOptions.Material.length === 0 ||
         selectedOptions.Material.some(material =>
-          product.categoryName?.toLowerCase().includes(material.toLowerCase()) ||
-          product.shortDescription?.toLowerCase().includes(material.toLowerCase())
+          product.materials && Object.keys(product.materials).some(materialKey =>
+            materialKey.toLowerCase().includes(material.toLowerCase())
+          )
         )
 
       const matchesTipo =
