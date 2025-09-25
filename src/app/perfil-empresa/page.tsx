@@ -308,11 +308,20 @@ export default function PerfilEmpresaPage() {
                 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">ID da Loja:</span>
-                    <span className="font-mono text-xs text-gray-500">
-                      {storeData?.uuid ? `${storeData.uuid.substring(0, 8)}...` : 'N/A'}
-                    </span>
-                  </div>
+  <span className="text-sm text-gray-600">ID da Loja:</span>
+  <button
+    onClick={() => {
+      if (storeData?.uuid) {
+        navigator.clipboard.writeText(storeData.uuid)
+        alert("ID copiado!")
+      }
+    }}
+    className="font-mono text-xs text-gray-500 hover:text-gray-700 transition cursor-pointer"
+  >
+    {storeData?.uuid ? `${storeData.uuid.substring(0, 8)}...` : "N/A"}
+  </button>
+</div>
+
                   
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Criada em:</span>

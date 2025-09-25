@@ -22,6 +22,21 @@ export default function ProdutosPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [searchLoading, setSearchLoading] = useState(false)
+
+    const parseCondicao = (condition: string) => {
+        switch (condition) {
+          case 'NEW':
+            return 'Novo'
+          case 'USED':
+            return 'Usado'
+          case 'REFURBISHED':
+            return 'Upcycle'
+          case 'DAMAGED':
+            return 'Danificado'
+          default:
+            return 'Desconhecida'
+      }
+    }
   
   // Estados para produtos recomendados
   const [recommendedProducts, setRecommendedProducts] = useState<ProductResponse[]>([])
@@ -150,7 +165,8 @@ export default function ProdutosPage() {
       const matchesCondicao =
         selectedOptions["Condição da peça"].length === 0 ||
         selectedOptions["Condição da peça"].some(condicao =>
-          product.condition?.toLowerCase() === condicao.toLowerCase()
+          product.condition?.toLowerCase() === condicao.toLowerCase() ||
+          parseCondicao(product.condition || '').toLowerCase() === condicao.toLowerCase()
         )
 
       const matchesTamanho =

@@ -105,7 +105,7 @@ export default function CadastroLoja() {
     const checkAuthAndStore = async () => {
       if (!isAuthenticated) {
         router.push('/login')
-        return
+        return  
       }
       
       // Verificar se o usuário já possui uma loja
@@ -113,7 +113,7 @@ export default function CadastroLoja() {
         setIsCheckingExistingStore(true)
         try {
           const userStores = await apiClient.getStoresByOwner(user.id)
-          if (userStores) {
+          if (userStores && userStores.data && userStores.data.name) {
             setHasExistingStore(true)
             // Redirecionar para perfil-empresa com mensagem
             router.push('/perfil-empresa?message=store-exists')
