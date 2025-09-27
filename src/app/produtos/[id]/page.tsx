@@ -51,9 +51,28 @@ export default function ProductPage() {
         setStore({
           uuid: 'default',
           name: 'Loja Padrão',
+          completeName: 'Loja Padrão LTDA',
           description: 'Descrição não disponível',
           sells: 0,
-          products: []
+          products: [],
+          address: {
+            country: '',
+            state: '',
+            zipCode: '',
+            addressLineOne: '',
+            addressLineTwo: '',
+            additionalInfo: '',
+          },
+          logoUrl: '',
+          bannerUrl: '',
+          proposal: '',
+          badges: [],
+          ownerUUID: '',
+          cnpj: '65041828312',
+          whatsapp: '11987654321',
+          mainCategory: 'Todas',
+          mainMediaTag: '@lojapadrao',
+          email: 'lojapadrao@wnv.org',
         })
       }
     } catch (error) {

@@ -45,30 +45,24 @@ export default function PerfilPage() {
       setError(null);
       const storesResponse = await weNoveApi.getStoresByOwner(userId);
 
-      if (storesResponse.success) {
+      console.log(storesResponse)
+
+      if (storesResponse.success && storesResponse.data && Array.isArray(storesResponse.data) && storesResponse.data.length > 0) {
+        const firstStore = storesResponse.data[0];
         setUserStores({
-          stores: (storesResponse.data || []).map(store => ({
-            ...store,
-            completeName: store.name,
-            address: {
-              country: '',
-              state: '',
-              zipCode: '',
-              addressLineOne: '',
-              addressLineTwo: '',
-              additionalInfo: '',
-            },
-            feedbackStars: 0,
-            logoUrl: '',
-            bannerUrl: '',
-            sells: store.sells || 0,
-            rating: 0,
-            totalProducts: 0,
-            proposal: '',
-            products: [],
-            badges: []
-          })),
-          isStoreOwner: (storesResponse.data || []).length > 0
+          stores: [{
+            ...firstStore,
+            completeName: firstStore.completeName || firstStore.name,
+            address: firstStore.address,
+            feedbackStars: firstStore.feedbackStars || 0,
+            logoUrl: firstStore.logoUrl || '',
+            bannerUrl: firstStore.bannerUrl || '',
+            sells: firstStore.sells || 0,
+            proposal: firstStore.proposal || '',
+            products: firstStore.products || [],
+            badges: firstStore.badges || []
+          }],
+          isStoreOwner: true
         });
       } else {
         setUserStores({ stores: [], isStoreOwner: false });
@@ -284,6 +278,25 @@ export default function PerfilPage() {
                       </p>
                     )}
                   </div>
+
+                  <div>
+                    <Label htmlFor="email" className="text-[#0c3729] font-medium">
+                      UUID
+                    </Label>
+                    {isEditing ? (
+                      <Input
+                        id="uuid"
+                        type="text"
+                        value={editedUser.id || ''}
+                        className="mt-1 transition-all duration-200 focus:scale-105 focus:shadow-lg"
+                      />
+                    ) : (
+                      <p className="mt-1 text-gray-700 flex items-center hover:text-[#88a51d] transition-colors duration-200">
+                        <Mail className="w-4 h-4 mr-2 text-[#88a51d]" />
+                        {user?.id}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -295,70 +308,65 @@ export default function PerfilPage() {
               <CardContent className="p-6">
                 <h2 className="text-xl font-semibold text-[#0c3729] flex items-center mb-6 animate-slide-up animate-delay-700">
                   <StoreIcon className="w-5 h-5 mr-2" />
-                  Minhas Lojas
+                  Minha Loja
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {userStores.stores.map((store, index) => (
-                    <Card key={store.uuid} className="border-[#88a51d]/20 animate-scale-in hover:shadow-md transition-all duration-300 hover:scale-105" style={{ animationDelay: `${800 + index * 100}ms` }}>
-                      <CardContent className="p-4">
-                        <div className="flex items-start justify-between mb-3">
-                          <h3 className="font-semibold text-[#0c3729]">{store.name}</h3>
-                          <div className="flex items-center text-xs">
-                            <div className={`w-2 h-2 rounded-full mr-1 ${store.sells > 0 ? 'bg-green-500' : 'bg-gray-400'
+                {userStores.stores.length > 0 && userStores.stores[0] && (
+                  <div className="max-w-2xl mx-auto">
+                    <Card className="border-[#88a51d]/20 animate-scale-in hover:shadow-md transition-all duration-300 hover:scale-105" style={{ animationDelay: '800ms' }}>
+                      <CardContent className="p-6">
+                        <div className="flex items-start justify-between mb-4">
+                          <h3 className="text-xl font-semibold text-[#0c3729]">{userStores.stores[0]?.name || 'Nome não disponível'}</h3>
+                          <div className="flex items-center text-sm">
+                            <div className={`w-3 h-3 rounded-full mr-2 ${
+                              (userStores.stores[0]?.sells || 0) > 0 ? 'bg-green-500' : 'bg-gray-400'
                               }`} />
-                            {store.sells > 0 ? 'Ativa' : 'Sem vendas'}
+                            {(userStores.stores[0]?.sells || 0) > 0 ? 'Ativa' : 'Sem vendas'}
                           </div>
                         </div>
 
-                        <p className="text-sm text-gray-600 mb-4">{store.description}</p>
+                        <p className="text-gray-600 mb-6">{userStores.stores[0]?.description || 'Descrição não disponível'}</p>
 
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">Vendas realizadas:</span>
-                            <span className="font-medium text-[#88a51d]">{store.sells}</span>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                          <div className="bg-[#88a51d]/5 p-4 rounded-lg">
+                            <div className="text-sm text-gray-600 mb-1">Vendas realizadas</div>
+                            <div className="text-2xl font-bold text-[#88a51d]">{userStores.stores[0]?.sells || 0}</div>
                           </div>
 
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">ID da Loja:</span>
-                            <span className="font-mono text-xs text-gray-500">
-                              {store.uuid.substring(0, 8)}...
-                            </span>
+                          <div className="bg-[#0c3729]/5 p-4 rounded-lg">
+                            <div className="text-sm text-gray-600 mb-1">ID da Loja</div>
+                            <div className="font-mono text-sm text-gray-700">
+                              {userStores.stores[0]?.uuid?.substring(0, 8) || 'N/A'}...
+                            </div>
                           </div>
                         </div>
 
-                        <div className="mt-4 flex gap-2">
+                        <div className="flex gap-3">
                           <Button
-                            size="sm"
                             className="bg-[#88a51d] hover:bg-[#6d8016] text-white flex-1 transition-all duration-200 hover:scale-105 hover:shadow-md"
-                            onClick={() => router.push(`/loja/${store.uuid}`)}
+                            onClick={() => router.push('/perfil-empresa')}
                           >
-                            <StoreIcon className="w-4 h-4 mr-1" />
-                            Gerenciar
+                            <StoreIcon className="w-4 h-4 mr-2" />
+                            Gerenciar Loja
                           </Button>
                           <Button
-                            size="sm"
                             variant="outline"
                             className="border-[#88a51d] text-[#88a51d] hover:bg-[#88a51d] hover:text-white flex-1 transition-all duration-200 hover:scale-105 hover:shadow-md"
-                            onClick={() => router.push(`/produtos?store=${store.uuid}`)}
+                            onClick={() => {
+                              const storeUuid = userStores.stores[0]?.uuid;
+                              if (storeUuid) {
+                                router.push(`/produtos?store=${storeUuid}`);
+                              }
+                            }}
                           >
-                            <Package className="w-4 h-4 mr-1" />
-                            Produtos
+                            <Package className="w-4 h-4 mr-2" />
+                            Ver Produtos
                           </Button>
                         </div>
                       </CardContent>
                     </Card>
-                  ))}
-                </div>
-
-                <div className="mt-6 text-center">
-                  <Button
-                    className="bg-[#88a51d] hover:bg-[#6d8016] text-white transition-all duration-200 hover:scale-105 hover:shadow-lg animate-fade-in animate-delay-1000"
-                  >
-                    <StoreIcon className="w-4 h-4 mr-2" />
-                    Criar Nova Loja
-                  </Button>
-                </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           )}

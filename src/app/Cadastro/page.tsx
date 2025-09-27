@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import apiClient from "@/lib/api";
@@ -175,21 +174,21 @@ export default function CadastroPage() {
 
   const handleInputChange = (field: keyof FormData, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    
+
     // Validação em tempo real
     const fieldError = validateField(field, value);
     setErrors(prev => ({ ...prev, [field]: fieldError }));
-    
+
     // Calcular força da senha
     if (field === 'password' && typeof value === 'string') {
       setPasswordStrength(calculatePasswordStrength(value));
     }
-    
+
     // Limpar erro geral
     if (errors.general) {
       setErrors(prev => ({ ...prev, general: undefined }));
     }
-    
+
     // Limpar mensagem de sucesso se o usuário começar a editar
     if (successMessage) {
       setSuccessMessage('');
@@ -198,7 +197,7 @@ export default function CadastroPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -217,7 +216,7 @@ export default function CadastroPage() {
       };
 
       const response = await apiClient.register(registerData);
-      
+
       if (response.success) {
         setSuccessMessage('Cadastro realizado com sucesso! Redirecionando para o login...');
         // Limpar formulário
@@ -235,8 +234,8 @@ export default function CadastroPage() {
       }
     } catch (error) {
       console.error('Erro no cadastro:', error);
-      setErrors({ 
-        general: error instanceof Error ? error.message : 'Erro interno do servidor. Tente novamente.' 
+      setErrors({
+        general: error instanceof Error ? error.message : 'Erro interno do servidor. Tente novamente.'
       });
     } finally {
       setIsLoading(false);
@@ -280,7 +279,7 @@ export default function CadastroPage() {
                 {errors.general}
               </div>
             )}
-            
+
             {/* Mensagem de sucesso */}
             {successMessage && (
               <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg animate-fade-in animate-bounce-in">
@@ -342,7 +341,7 @@ export default function CadastroPage() {
                       </span>
                     </div>
                     <div className="mt-1 w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                      <div 
+                      <div
                         className={`h-2 rounded-full transition-all duration-500 ease-out ${
                           passwordStrength.score <= 2 ? 'bg-red-500' :
                           passwordStrength.score <= 4 ? 'bg-yellow-500' : 'bg-green-500'
@@ -395,7 +394,7 @@ export default function CadastroPage() {
               )}
             </div>
 
-            {/* Botão Registrar */}
+            {/* Botão Enviar */}
             <Button
               type="submit"
               disabled={isLoading}
@@ -424,4 +423,5 @@ export default function CadastroPage() {
       </div>
     </div>
   )
+
 }

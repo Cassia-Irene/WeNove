@@ -19,6 +19,24 @@ export interface LoginRequest {
     password: string;
 }
 
+export interface StoreCreationRequest {
+    name: string;
+    completeName: string;
+    description: string;
+    address: Address,
+    logoUrl: string;
+    bannerUrl: string;
+    proposal: string;
+    sells: number;
+    badges: string[];
+    ownerUUID: string;
+    cnpj: string;
+    whatsapp: string;
+    email: string;
+    mainMediaTag: string;
+    mainCategory: string;
+}
+
 export interface User {
     id?: string;
     name: string;
@@ -59,27 +77,27 @@ export interface Feedback {
 }
 
 export interface Store {
-  uuid: string;
-  name: string;
-  completeName: string;
-  address: Address;
-  feedbackStars: number;
-  logoUrl: string;
-  proposal: string;
-  bannerUrl: string;
-  description: string;
-  products: string[];
-  sells: number;
-  badges: StoreBadge[];
+    uuid: string;
+    name: string;
+    completeName: string;
+    address: Address;
+    feedbackStars: number;
+    logoUrl: string;
+    proposal: string;
+    bannerUrl: string;
+    description: string;
+    products: Product[];
+    sells: number;
+    badges: StoreBadge[];
 }
 
 export interface Address {
-  country: string;
-  state: string;
-  zipCode: string;
-  addressLineOne: string;
-  addressLineTwo: string;
-  additionalInfo: string;
+    country: string;
+    state: string;
+    zipCode: string;
+    addressLineOne: string;
+    addressLineTwo: string;
+    additionalInfo: string;
 }
 
 export enum StoreBadge {
@@ -164,8 +182,19 @@ export interface ProductResponse {
 export interface StoreResponse {
     uuid: string;
     name: string;
+    completeName: string;
     description: string;
-    ownerUuid?: string | undefined;
+    address: Address,
+    logoUrl: string;
+    bannerUrl: string;
+    proposal: string;
     sells: number;
-    products: ProductResponse[];
+    badges: string[];
+    products: Product[];
+    ownerUUID: string;
+    cnpj: string;
+    whatsapp: string;
+    email: string;
+    mainMediaTag: string;
+    mainCategory: string;
 }

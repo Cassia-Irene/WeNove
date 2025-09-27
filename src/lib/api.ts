@@ -10,7 +10,9 @@ import {
     CreateStoreRequest,
     UpdateStoreRequest,
     StoreResponse,
-    StoreFilters
+    StoreFilters,
+    StoreCreationRequest,
+    Product
 } from "./api.types"
 
 class ApiClient {
@@ -120,7 +122,20 @@ class ApiClient {
 
     // Métodos de lojas
     async createStore(data: CreateStoreRequest): Promise<ApiResponse<StoreResponse>> {
-        return this.request<StoreResponse>('/stores', {
+        return this.request<StoreResponse>('/stores/new', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+    }
+
+    async getStoreByOwner(ownerUuid: string): Promise<ApiResponse<StoreResponse>> {
+        return this.request<StoreResponse>(`/stores/owner/${ownerUuid}`);
+    }
+
+    async createStoreNew(data: StoreCreationRequest): Promise<ApiResponse<StoreResponse>> {
+        console.log(JSON.stringify(data))
+
+        return this.request<StoreResponse>('/stores/new', {
             method: 'POST',
             body: JSON.stringify(data)
         });
@@ -144,29 +159,8 @@ class ApiClient {
         return this.request<any[]>(url);
     }
 
-    async getStoresByOwner(ownerUuid: string): Promise<ApiResponse<StoreResponse[]>> {
-        try {
-            const response = await this.getAllStores();
-            if (response.success && response.data) {
-                const userStores = response.data.filter((store: any) => store.ownerUuid === ownerUuid);
-                return {
-                    success: true,
-                    data: userStores,
-                    message: response.message
-                };
-            }
-            return {
-                success: true,
-                data: [],
-                message: 'Nenhuma loja encontrada'
-            };
-        } catch (error) {
-            return {
-                success: false,
-                data: [],
-                message: error instanceof Error ? error.message : 'Erro ao buscar lojas'
-            };
-        }
+    async getStoresByOwner(ownerUuid: string): Promise<ApiResponse<StoreResponse>> {
+        return this.request<StoreResponse>(`/stores/owner/${ownerUuid}`);
     }
 
     async getStoreByName(name: string) : Promise<ApiResponse<StoreResponse>> {
@@ -225,7 +219,7 @@ export async function getStoreByName(name: string): Promise<StoreResponse | null
     }
 }
 
-export async function getProductsByStore(storeName: string): Promise<ProductResponse[]> {
+export async function getProductsByStore(storeName: string): Promise<Product[]> {
     try {
         const response = await apiClient.getStoreByName(storeName);
         if (response.success && response.data.products) {
