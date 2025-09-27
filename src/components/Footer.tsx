@@ -108,7 +108,7 @@ export default function Footer() {
                 </li>
                 
                 <li>
-                  <Link href="/criar-loja" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
+                  <Link href="/perfil-empresa" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
                   </Link>
                 </li>

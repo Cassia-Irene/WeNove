@@ -356,7 +356,7 @@ export default function ProdutosPage() {
                 </div>
               ) : error ? (
                 <div className="col-span-full text-center py-12">
-                  <p className="text-red-600 mb-4">{error}</p>
+                  <p className="text-red-600 font-dosis mb-4">{error}</p>
                   <Button onClick={loadProducts} variant="outline">
                     Tentar novamente
                   </Button>
@@ -371,7 +371,7 @@ export default function ProdutosPage() {
                         <h3 className="text-2xl font-bold text-[#0C3729] mb-2 font-dosis">
                           Nenhum produto encontrado
                         </h3>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-[#A66438] text-lg font-dosis">
                           Não encontramos produtos que correspondam aos seus critérios de busca.
                         </p>
                       </div>
