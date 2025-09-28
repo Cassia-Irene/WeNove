@@ -43,13 +43,19 @@ class ApiClient {
             const response = await fetch(url, config);
             const data = await response.json();
             
+            if (!response.ok && data.error === "Nenhum produto encontrado") {
+                return {success: true, data: [] as any, message: data.error };
+            }
+
             if (!response.ok) {
-                throw new Error(data.error || `HTTP error! status: ${response.status}`);
+                throw new Error(data.error `HTTP error! status: ${response.status}`);
             }
             
             return data;
+
         } catch (error) {
-            throw new Error(`API request failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            console.error('Erro na requisição API:', error instanceof Error ? error.message : error);
+            throw new Error(`Erro de conexão com a API: ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
     }
 
