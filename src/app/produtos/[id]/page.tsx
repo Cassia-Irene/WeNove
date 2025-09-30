@@ -44,7 +44,21 @@ export default function ProductPage() {
         if (relatedData) {
           // Filtrar o produto atual da lista
           const filtered = relatedData.filter(p => p.uuid !== productId)
-          setRelatedProducts(filtered)
+          // Garantir que 'condition' seja do tipo correto
+          const mapped = filtered.map(p => ({
+            ...p,
+            condition: 
+              p.condition === "NEW"
+                ? "NEW"
+                : p.condition === "USED"
+                ? "USED"
+                : p.condition === "REFURBISHED"
+                ? "REFURBISHED"
+                : p.condition === "DAMAGED"
+                ? "DAMAGED"
+                : "USED" // fallback para um valor válido
+          })) as ProductResponse[]
+          setRelatedProducts(mapped)
         }
       } else {
         // Criar loja padrão se não encontrar

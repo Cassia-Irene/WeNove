@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from 'next/navigation';
 import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo, useCallback, useRef } from 'react';
 import { User } from '@/lib/api.types';
 import { generateWeNoveAvatar } from '@/lib/avatar';
@@ -11,6 +12,7 @@ interface UserContextType {
   logout: () => void;
   avatarUrl: string | null;
   resetSessionTimer: () => void;
+  isLoggingOut: boolean;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -28,6 +30,8 @@ interface UserProviderProps {
 }
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
+  const router = useRouter();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const sessionTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -135,6 +139,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const handleSetUser = (userData: User | null) => {
     setUser(userData);
+    resetSessionTimer();
     if (userData) {
       localStorage.setItem('wenove_user', JSON.stringify(userData));
       resetSessionTimer();
@@ -151,12 +156,16 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   }, [user?.name]);
 
   const logout = () => {
+    setIsLoggingOut(true);
     setUser(null);
     localStorage.removeItem('wenove_user');
     localStorage.removeItem('wenove_last_activity');
     clearSessionTimer();
+    
     // Redirecionar para a página de login
-    window.location.href = '/login';
+    setTimeout(() => {
+      window.location.href = '/login';
+    }, 100);
   };
 
   const value = {
@@ -166,6 +175,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     logout,
     avatarUrl,
     resetSessionTimer,
+    isLoggingOut,
   };
 
   if (isLoading) {

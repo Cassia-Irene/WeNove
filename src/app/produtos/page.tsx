@@ -337,7 +337,7 @@ export default function ProdutosPage() {
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
 
           {/* Sidebar de filtros */}
-          <aside className="lg:hidden xl:block lg:col-span-1 animate-slide-in-left animate-delay-100">
+          <aside>
             <Filtros
               selectedOptions={selectedOptions}
               setSelectedOptions={setSelectedOptions}
@@ -378,7 +378,7 @@ export default function ProdutosPage() {
                         <Button
                           onClick={() => setSearchQuery('')}
                           variant="outline"
-                          className="border-[#88a51d] text-white bg-[#88a51d] hover:bg-[#88a51d]"
+                          className="border-[#88a51d] text-white bg-[#88a51d] hover:bg-[#88a51d] cursor-pointer"
                         >
                           Limpar busca
                         </Button>

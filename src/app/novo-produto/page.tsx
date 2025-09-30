@@ -292,7 +292,7 @@ export default function CadastroProduto() {
                               className="w-full h-24 object-cover rounded-lg border"
                               onClick={() => {
                                 const modal = document.getElementById(`modal-${index}`);
-                                if (modal) modal.showModal();
+                                if (modal) (modal as HTMLDialogElement).showModal();
                               }}
                             />
                             <button
@@ -329,7 +329,7 @@ export default function CadastroProduto() {
                                   <button
                                     onClick={() => {
                                       const modal = document.getElementById(`modal-${index}`);
-                                      if (modal) modal.close();
+                                      if (modal) (modal as HTMLDialogElement).close();
                                     }}
                                     className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 transition-colors"
                                   >

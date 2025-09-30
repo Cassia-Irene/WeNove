@@ -82,7 +82,7 @@ export default function CadastroPage() {
   // Redirecionar se já estiver autenticado
   useEffect(() => {
     if (isAuthenticated) {
-      router.push('/Perfil-Empreen-Editavel');
+      router.push('/');
     }
   }, [isAuthenticated, router]);
 

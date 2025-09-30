@@ -44,11 +44,15 @@ class ApiClient {
             const data = await response.json();
             
             if (!response.ok && data.error === "Nenhum produto encontrado") {
-                return {success: true, data: [] as any, message: data.error };
+                return {success: true, data: [] as T, message: data.error };
             }
 
             if (!response.ok) {
-                throw new Error(data.error `HTTP error! status: ${response.status}`);
+                return {
+            success: false,
+            data: null as T,
+            message: data.error || `HTTP ${response.status}`
+        };
             }
             
             return data;
@@ -105,7 +109,7 @@ class ApiClient {
         }
         const queryString = params.toString();
         const url = queryString ? `/products?${queryString}` : '/products';
-        return this.request<any[]>(url);
+        return this.request<ProductResponse[]>(url);
     }
 
     async searchProducts(name: string): Promise<ApiResponse<ProductResponse[]>> {
@@ -151,7 +155,7 @@ class ApiClient {
         return this.request<StoreResponse>(`/stores/${uuid}`);
     }
 
-    async getAllStores(filters?: StoreFilters): Promise<ApiResponse<any[]>> {
+    async getAllStores(filters?: StoreFilters): Promise<ApiResponse<StoreResponse[]>> {
         const params = new URLSearchParams();
         if (filters) {
             Object.entries(filters).forEach(([key, value]) => {
@@ -162,7 +166,7 @@ class ApiClient {
         }
         const queryString = params.toString();
         const url = queryString ? `/stores?${queryString}` : '/stores';
-        return this.request<any[]>(url);
+        return this.request<StoreResponse[]>(url);
     }
 
     async getStoresByOwner(ownerUuid: string): Promise<ApiResponse<StoreResponse>> {
