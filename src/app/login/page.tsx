@@ -236,7 +236,7 @@ export default function LoginPage() {
               <p className="text-[#0c3729]/70 font-dosis text-sm">
                 Não tem uma conta?{' '}
                 <Link
-                  href="/Cadastro"
+                  href="/cadastro"
                   className="text-[#88a51d] hover:text-[#256609] font-semibold underline transition-all duration-200 hover:scale-105"
                 >
                   Cadastre-se aqui
