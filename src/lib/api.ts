@@ -18,7 +18,7 @@ import {
 class ApiClient {
     private baseUrl: string;
 
-    constructor(baseUrl: string = 'http://localhost:8080/api') {
+    constructor(baseUrl: string = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api') {
         this.baseUrl = baseUrl;
     }
 
