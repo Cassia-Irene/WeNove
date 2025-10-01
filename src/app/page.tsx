@@ -3,13 +3,15 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Package, Scissors, RefreshCw, Recycle, Search, Users, RotateCcw, Menu, X } from "lucide-react"
+import { Package, Scissors, RefreshCw, Recycle, Search, Users, RotateCcw, Menu, X, User, LogOut } from "lucide-react"
 import HeroSection from "@/components/HeroSection";
 import Link from "next/link";
 import { useState } from "react"
+import { useUser } from "@/contexts/UserContext";
 
 export default function WenoveLanding() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, isAuthenticated, logout } = useUser();
 
   return (
     
@@ -59,19 +61,47 @@ export default function WenoveLanding() {
 
           {/* Botão - Oculto no celular, visível no tablet+ */}
             <div className="hidden sm:block">
-              <Link
-                href="/diferenciar-publico"
-                className="
-                absolute top-4 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px]
-                w-[120px] sm:w-[140px] lg:w-[150px] h-[40px] lg:h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59]
-                text-[#0C3729] font-dosis font-semibold text-sm sm:text-lg lg:text-[20px]
-                rounded-full flex items-center justify-center
-                shadow-[0_4px_4px_rgba(0,0,0,0.25)]
-                before:absolute before:inset-0 before:shadow-inner before:shadow-[0_4px_4px_rgba(0,0,0,0.25)] before:rounded-full
-                transition
-              ">
-                Sou Wenove
-              </Link>
+              {isAuthenticated ? (
+                <div className="absolute top-4 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px] flex items-center gap-2">
+                  <Link
+                    href="/perfil"
+                    className="
+                    w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59]
+                    text-[#0C3729] font-dosis font-semibold
+                    rounded-full flex items-center justify-center
+                    shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+                    before:absolute before:inset-0 before:shadow-inner before:shadow-[0_4px_4px_rgba(0,0,0,0.25)] before:rounded-full
+                    transition
+                  ">
+                    <User className="w-5 h-5" />
+                  </Link>
+                  <button
+                    onClick={logout}
+                    className="
+                    w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] bg-red-500 hover:bg-red-600
+                    text-white font-dosis font-semibold
+                    rounded-full flex items-center justify-center
+                    shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+                    transition
+                  ">
+                    <LogOut className="w-5 h-5" />
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  className="
+                  absolute top-4 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px]
+                  w-[120px] sm:w-[140px] lg:w-[150px] h-[40px] lg:h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59]
+                  text-[#0C3729] font-dosis font-semibold text-sm sm:text-lg lg:text-[20px]
+                  rounded-full flex items-center justify-center
+                  shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+                  before:absolute before:inset-0 before:shadow-inner before:shadow-[0_4px_4px_rgba(0,0,0,0.25)] before:rounded-full
+                  transition
+                ">
+                  Sou Wenove
+                </Link>
+              )}
             </div>
 
         </header>
@@ -139,12 +169,36 @@ export default function WenoveLanding() {
 
                   {/* CTA Button */}
                   <div className="p-6 mt-8">
-                    <Button
-                      className="w-full h-12 bg-[#FFCC00] hover:bg-[#FFDE59] text-[#0C3729] font-dosis font-semibold text-lg rounded-full shadow-lg transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      <Link href="/diferenciar-publico">Sou Wenove</Link>
-                    </Button>
+                    {isAuthenticated ? (
+                      <div className="space-y-3">
+                        <Button
+                          className="w-full h-12 bg-[#FFCC00] hover:bg-[#FFDE59] text-[#0C3729] font-dosis font-semibold text-lg rounded-full shadow-lg transition-colors"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <Link href="/perfil" className="flex items-center gap-2">
+                            <User className="w-5 h-5" />
+                            Meu Perfil
+                          </Link>
+                        </Button>
+                        <Button
+                          className="w-full h-12 bg-red-500 hover:bg-red-600 text-white font-dosis font-semibold text-lg rounded-full shadow-lg transition-colors"
+                          onClick={() => {
+                            logout();
+                            setIsMobileMenuOpen(false);
+                          }}
+                        >
+                          <LogOut className="w-5 h-5 mr-2" />
+                          Sair
+                        </Button>
+                      </div>
+                    ) : (
+                      <Button
+                        className="w-full h-12 bg-[#FFCC00] hover:bg-[#FFDE59] text-[#0C3729] font-dosis font-semibold text-lg rounded-full shadow-lg transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <Link href="/login">Sou Wenove</Link>
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -177,7 +231,7 @@ export default function WenoveLanding() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-4">
 
-              <Card className=" group bg-[transparent] border-2 sm:border-4 border-[#8f3332] rounded-lg transition-colors duration-300 hover:bg-[#8F3332] hover:border-[#8F3332]">
+              <Card className="group bg-[transparent] border-2 sm:border-4 border-[#8f3332] rounded-lg transition-colors duration-300 hover:bg-[#8F3332] hover:border-[#8F3332] animate-fade-in animate-delay-100 card-animate hover-lift">
                 
                 <CardContent className="p-1 sm:p-6 text-center">
                   
@@ -195,7 +249,7 @@ export default function WenoveLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="group bg-[transparent] border-2 sm:border-4 border-[#8f3332] rounded-lg transition-colors duration-300 hover:bg-[#8F3332] hover:border-[#8F3332]">
+              <Card className="group bg-[transparent] border-2 sm:border-4 border-[#8f3332] rounded-lg transition-colors duration-300 hover:bg-[#8F3332] hover:border-[#8F3332] animate-fade-in animate-delay-200 card-animate hover-lift">
                 
                 <CardContent className="p-1 sm:p-6 text-center">
                   
@@ -213,7 +267,7 @@ export default function WenoveLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="group bg-[transparent] border-2 sm:border-4 border-[#8f3332] rounded-lg transition-colors duration-300 hover:bg-[#8F3332] hover:border-[#8F3332]">
+              <Card className="group bg-[transparent] border-2 sm:border-4 border-[#8f3332] rounded-lg transition-colors duration-300 hover:bg-[#8F3332] hover:border-[#8F3332] animate-fade-in animate-delay-300 card-animate hover-lift">
                 
                 <CardContent className="p-4 sm:p-6 text-center">
                   
@@ -231,7 +285,7 @@ export default function WenoveLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="group bg-[transparent] border-2 sm:border-4 border-[#8f3332] rounded-lg transition-colors duration-300 hover:bg-[#8F3332] hover:border-[#8F3332]">
+              <Card className="group bg-[transparent] border-2 sm:border-4 border-[#8f3332] rounded-lg transition-colors duration-300 hover:bg-[#8F3332] hover:border-[#8F3332] animate-fade-in animate-delay-500 card-animate hover-lift">
                 
                 <CardContent className="p-4 sm:p-6 text-center">
                   
@@ -244,7 +298,7 @@ export default function WenoveLanding() {
                   >RECICLAGEM</h3>
                   
                   <p className="text-[#993F3C] font-dosis text-sm sm:text-base leading-relaxed transition-colors duration-300 group-hover:text-white">
-                    Materiais têxteis das reciclados reduzindo impacto ambiental.
+                    Materiais têxteis são reciclados reduzindo impacto ambiental.
                   </p>
                 </CardContent>
               </Card>
@@ -367,13 +421,13 @@ export default function WenoveLanding() {
         
         <div className="max-w-6xl mx-auto">
           
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#8f3332] text-center mb-12 sm:mb-16 lg:mb-20 text-balance"
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#8f3332] text-center mb-12 sm:mb-16 lg:mb-20 text-balance animate-fade-in"
           style={{ fontFamily: "Futura, sans-serif" }}>
             Por que escolher a Wenove?
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <div className="text-center">
+            <div className="text-center animate-fade-in animate-delay-100 card-animate hover-lift">
               
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#395C3E] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <span className="text-[#ffffff] text-2xl sm:text-3xl lg:text-4xl"
@@ -388,7 +442,7 @@ export default function WenoveLanding() {
               <p className="text-[#88A51D] font-dosis font-semibold text-sm sm:text-base leading-relaxed text-center mx-auto max-w-[220px]">Moda que faz sentido para você e para o planeta.</p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center animate-fade-in animate-delay-200 card-animate hover-lift">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#395C3E] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <span className="text-[#ffffff] text-2xl sm:text-3xl lg:text-4xl"
                 style={{ fontFamily: "Futura, sans-serif" }}
@@ -402,7 +456,7 @@ export default function WenoveLanding() {
               <p className="text-[#88A51D] font-dosis font-semibold text-sm sm:text-base leading-relaxed text-center mx-auto max-w-[220px]">Menos descarte, mais responsabilidade.</p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center animate-fade-in animate-delay-300 card-animate hover-lift">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#395C3E] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <span className="text-[#ffffff] text-2xl sm:text-3xl lg:text-4xl"
                 style={{ fontFamily: "Futura, sans-serif" }}
@@ -416,7 +470,7 @@ export default function WenoveLanding() {
               <p className="text-[#88A51D] font-dosis font-semibold text-sm sm:text-base leading-relaxed text-center mx-auto max-w-[220px]">Pessoas, marcas e empreendedores juntos.</p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center animate-fade-in animate-delay-500 card-animate hover-lift">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#395C3E] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <span className="text-[#ffffff] text-2xl sm:text-3xl lg:text-4xl"
                 style={{ fontFamily: "Futura, sans-serif" }}

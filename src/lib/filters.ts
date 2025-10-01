@@ -21,10 +21,10 @@ export const filterOptions = {
     "Outros",
   ],
   "Condição da peça": [
-    "Nova → Nunca usada, etiqueta original",
-    "Reformada → Ajustada, mas preserva a essência original",
-    "Seminova → Usada, mas em ótimo estado",
-    "Upcycling → Produto recriado a partir de outra peça",
+    "Nova",
+    "Reformada",
+    "Usada",
+    "Upcycling",
   ],
   Tamanho: [
     "PP",

@@ -1,7 +1,10 @@
+"use client"
+
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react"
+import { ShoppingCart, LogOut, User } from "lucide-react";
+import { useUser } from "@/contexts/UserContext";
 
 interface HeaderProdutoProps {
   logoSrc?: string;
@@ -51,16 +54,75 @@ export default function HeaderProduto({ logoSrc, cartColor }: HeaderProdutoProps
                   </span>
                 </div>
                 
-                <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center shadow-user">
-                <Image 
-                src="/usuario-foto.png" 
-                alt="Foto do usuário"
-                width={48}
-                height={48}
-                className="w-full h-full rounded-full object-cover"/>
-                </div>
+                <UserAvatar />
             </div>
         </header>
-    </>
+    </>    );
+}
+
+// Componente UserAvatar com dropdown
+function UserAvatar() {
+  const { user, logout, avatarUrl, isAuthenticated } = useUser();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  if (!isAuthenticated) {
+    return (
+      <Link href="/login" className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center shadow-user bg-gray-300">
+        <User className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+      </Link>
     );
+  }
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center shadow-user focus:outline-none focus:ring-2 focus:ring-[#88a51d] focus:ring-offset-2"
+      >
+        {avatarUrl ? (
+          <Image 
+            src={avatarUrl} 
+            alt={`Avatar de ${user?.name}`}
+            width={48}
+            height={48}
+            className="w-full h-full rounded-full object-cover"
+            unoptimized={true}
+          />
+        ) : (
+          <div className="w-full h-full rounded-full bg-[#88a51d] flex items-center justify-center">
+            <User className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+          </div>
+        )}
+      </button>
+
+      {isDropdownOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+          <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
+            <p className="font-medium">{user?.name}</p>
+            <p className="text-gray-500 text-xs">{user?.email}</p>
+          </div>
+          
+          <Link
+            href="/perfil"
+            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+            onClick={() => setIsDropdownOpen(false)}
+          >
+            <User className="w-4 h-4 mr-2" />
+            Ver Perfil
+          </Link>
+          
+          <button
+            onClick={() => {
+              setIsDropdownOpen(false);
+              logout();
+            }}
+            className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+          >
+            <LogOut className="w-4 h-4 mr-2" />
+            Sair
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
