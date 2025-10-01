@@ -55,20 +55,18 @@ export default function ProdutosPage() {
       setLoading(true)
       setError(null)
       const response = await apiClient.getAllProducts()
-      if (response.success && response.data) {
+
+      if (response.success && response.data?.length > 0) {
         setProducts(response.data)
       } else {
-        setError(response.message || 'Erro ao carregar produtos')
+        // Nenhum produto encontrado: tratar como lista vazia, não como erro
+        setProducts([])
+        setError(null)
       }
     } catch (err) {
-      // Verificar se é "nenhum produto encontrado" vs erro real da API
-      if (err instanceof Error && err.message.includes('Nenhum produto encontrado')) {
-        setProducts([]) // Tratar como resultado vazio, não como erro
-        setError(null)
-      } else {
-        setError('Erro ao conectar com o servidor')
-        console.error('Erro ao carregar produtos:', err)
-      }
+      console.error('Erro ao carregar produtos:', err)
+      setError('Erro ao conectar com o servidor')
+      setProducts([])
     } finally {
       setLoading(false)
     }
@@ -310,7 +308,7 @@ export default function ProdutosPage() {
           {searchLoading ? (
             <Loader2 className="absolute left-4 md:left-17 lg:left-20 xl:left-20 top-1/2 transform -translate-y-1/2 text-[#FFF] h-4 w-4 sm:h-6 sm:w-6 animate-spin" />
           ) : (
-            <Search className="absolute left-4 md:left-17 lg:left-20 xl:left-20 top-1/2 transform -translate-y-1/2 text-[#FFF] h-4 w-4 sm:h-6 sm:w-6 transition-all duration-300" />
+            <Search className="absolute left-4 md:left-17 lg:left-20 xl:left-20 top-1/2 transform -translate-y-1/2 text-[#FFF] h-4 w-4 sm:h-6 sm:w-6" />
           )}
 
           <input
@@ -318,7 +316,7 @@ export default function ProdutosPage() {
             placeholder="Busque por peças, marcas ou materiais..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 sm:pl-10 md:pl-25 lg:pl-28 xl:pl-30 pr-4 py-2 sm:py-3 rounded-[20px] border-2 border-[#0C3729] bg-[#B2CC57] focus:outline-none focus:border-[#0C3729] text-white placeholder-white font-dosis font-medium search-input transition-all duration-300 focus:scale-105"
+            className="w-full pl-10 sm:pl-10 md:pl-25 lg:pl-28 xl:pl-30 pr-4 py-2 sm:py-3 rounded-[20px] border-2 border-[#0C3729] bg-[#B2CC57] focus:outline-none focus:border-[#0C3729] text-white placeholder-white font-dosis font-medium search-input"
             style={{
               boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.25)",
             }}
@@ -339,7 +337,7 @@ export default function ProdutosPage() {
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
 
           {/* Sidebar de filtros */}
-          <aside className="lg:hidden xl:block lg:col-span-1 animate-slide-in-left animate-delay-100">
+          <aside>
             <Filtros
               selectedOptions={selectedOptions}
               setSelectedOptions={setSelectedOptions}
@@ -356,7 +354,7 @@ export default function ProdutosPage() {
                 </div>
               ) : error ? (
                 <div className="col-span-full text-center py-12">
-                  <p className="text-red-600 mb-4">{error}</p>
+                  <p className="text-red-600 font-dosis mb-4">{error}</p>
                   <Button onClick={loadProducts} variant="outline">
                     Tentar novamente
                   </Button>
@@ -367,11 +365,11 @@ export default function ProdutosPage() {
                   <div className="col-span-full text-center py-12">
                     <div className="max-w-md mx-auto">
                       <div className="mb-6">
-                        <Search className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                        <Search className="w-16 h-16 text-[#B2CC57] mx-auto mb-4" />
                         <h3 className="text-2xl font-bold text-[#0C3729] mb-2 font-dosis">
                           Nenhum produto encontrado
                         </h3>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-[#A66438] text-lg font-dosis">
                           Não encontramos produtos que correspondam aos seus critérios de busca.
                         </p>
                       </div>
@@ -380,7 +378,7 @@ export default function ProdutosPage() {
                         <Button
                           onClick={() => setSearchQuery('')}
                           variant="outline"
-                          className="border-[#88a51d] text-white bg-[#88a51d] hover:bg-[#88a51d]"
+                          className="border-[#88a51d] text-white bg-[#88a51d] hover:bg-[#88a51d] cursor-pointer"
                         >
                           Limpar busca
                         </Button>
@@ -408,8 +406,8 @@ export default function ProdutosPage() {
                               href={`/produtos/${product.uuid}`}
                               className="w-full flex justify-center"
                             >
-                              <Card className="rounded-lg border-none hover:shadow-lg w-full max-w-[280px] sm:max-w-[200px] md:max-w-[220px] lg:max-w-[220px] xl:max-w-[300px] py-0 cursor-pointer card-animate hover-lift animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
-                                <div className="w-full h-[240px] overflow-hidden rounded-lg">
+                              <Card className="rounded-lg border-none hover:shadow-lg w-full max-w-[320px] py-0 cursor-pointer card-animate hover-lift animate-fade-in" style={{animationDelay: `${index * 150}ms`}}>
+                                <div className="w-full h-[280px] overflow-hidden rounded-lg">
                                   <Image
                                     src={product.imageUrls?.[0] || "/placeholder.svg"}
                                     alt={product.shortName}

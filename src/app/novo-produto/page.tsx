@@ -292,7 +292,7 @@ export default function CadastroProduto() {
                               className="w-full h-24 object-cover rounded-lg border"
                               onClick={() => {
                                 const modal = document.getElementById(`modal-${index}`);
-                                if (modal) modal.showModal();
+                                if (modal) (modal as HTMLDialogElement).showModal();
                               }}
                             />
                             <button
@@ -329,7 +329,7 @@ export default function CadastroProduto() {
                                   <button
                                     onClick={() => {
                                       const modal = document.getElementById(`modal-${index}`);
-                                      if (modal) modal.close();
+                                      if (modal) (modal as HTMLDialogElement).close();
                                     }}
                                     className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 transition-colors"
                                   >
@@ -385,7 +385,7 @@ export default function CadastroProduto() {
           {/* 5. Variações */}
           {/*           <Card>
             <CardHeader>
-              <CardTitle className="text-lg font-semibold">5. Variações</CardTitle>
+              <CardTitle className="text-lg font-semibold">4. Variações</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-gray-600">
@@ -449,7 +449,7 @@ export default function CadastroProduto() {
           {/* 6. Regras e Políticas */}
           {/*           <Card>
             <CardHeader>
-              <CardTitle className="text-lg font-semibold">6. Regras e Políticas</CardTitle>
+              <CardTitle className="text-lg font-semibold">5. Regras e Políticas</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>

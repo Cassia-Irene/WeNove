@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useUser } from '@/contexts/UserContext';
 import { User, Store } from '@/lib/api.types';
 import weNoveApi from '@/lib/api';
@@ -9,12 +9,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import {
   User as UserIcon,
   Mail,
-  Phone,
-  MapPin,
+  //Phone,
+ //MapPin,
   Store as StoreIcon,
   Package,
   Edit3,
@@ -24,7 +23,7 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { randomInt } from 'crypto';
+//import { randomInt } from 'crypto';
 
 interface UserStores {
   stores: Store[];
@@ -169,7 +168,7 @@ export default function PerfilPage() {
           )}
 
           {/* Informações do Usuário */}
-          <Card className="mb-8 animate-fade-in animate-delay-300 hover:shadow-lg transition-shadow duration-300">
+          <Card className="font-dosis mb-8 animate-fade-in animate-delay-300 hover:shadow-lg transition-shadow duration-300">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-[#0c3729] flex items-center">
@@ -195,7 +194,7 @@ export default function PerfilPage() {
                       className="bg-[#88a51d] hover:bg-[#6d8016] text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
                     >
                       {isSaving ? (
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        <Loader2 className="w-4 h-4 animate-spin" />
                       ) : (
                         <Save className="w-4 h-4 mr-2" />
                       )}
@@ -205,9 +204,9 @@ export default function PerfilPage() {
                       onClick={handleCancel}
                       variant="outline"
                       size="sm"
-                      className="border-gray-300 transition-all duration-200 hover:scale-105 hover:shadow-md"
+                      className="bg-[#88a51d] text-white transition-all duration-200 hover:scale-105 hover:shadow-md"
                     >
-                      <X className="w-4 h-4 mr-2" />
+                      <X className="w-4 h-4" />
                       Cancelar
                     </Button>
                   </div>
@@ -288,6 +287,7 @@ export default function PerfilPage() {
                         id="uuid"
                         type="text"
                         value={editedUser.id || ''}
+                        readOnly
                         className="mt-1 transition-all duration-200 focus:scale-105 focus:shadow-lg"
                       />
                     ) : (
@@ -375,7 +375,7 @@ export default function PerfilPage() {
           {!userStores.isStoreOwner && (
             <div className="space-y-6">
               {/* Ações Rápidas */}
-              <Card className="animate-fade-in animate-delay-600 hover:shadow-lg transition-shadow duration-300">
+              <Card className="font-dosis animate-fade-in animate-delay-600 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6">
                   <h2 className="text-xl font-semibold text-[#0c3729] flex items-center mb-6 animate-slide-up animate-delay-700">
                     <Package className="w-5 h-5 mr-2" />
@@ -393,7 +393,7 @@ export default function PerfilPage() {
                     </Button>
 
                     <Button
-                      onClick={() => router.push('/favoritos')}
+                      onClick={() => router.push('/perfil')} //Antes era '/favoritos'
                       variant="outline"
                       className="h-20 bg-[#88a51d]/5 flex-col border-[#88a51d]/20 hover:bg-[#cfe090]/2 transition-all duration-200 hover:scale-105 hover:shadow-md animate-scale-in animate-delay-900"
                     >
@@ -402,7 +402,7 @@ export default function PerfilPage() {
                     </Button>
 
                     <Button
-                      onClick={() => router.push('/pedidos')}
+                      onClick={() => router.push('/perfil')} // Antes era '/pedidos'
                       variant="outline"
                       className="h-20 bg-[#88a51d]/5 flex-col border-[#88a51d]/20 hover:bg-[#cfe090]/2 transition-all duration-200 hover:scale-105 hover:shadow-md animate-scale-in animate-delay-1000"
                     >
@@ -414,7 +414,7 @@ export default function PerfilPage() {
               </Card>
 
               {/* Estatísticas do Usuário */}
-              <Card className="animate-fade-in animate-delay-1100 hover:shadow-lg transition-shadow duration-300">
+              <Card className="font-dosis animate-fade-in animate-delay-1100 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6">
                   <h2 className="text-xl font-semibold text-[#0c3729] flex items-center mb-6 animate-slide-up animate-delay-1200">
                     <UserIcon className="w-5 h-5 mr-2" />
@@ -441,7 +441,7 @@ export default function PerfilPage() {
               </Card>
 
               {/* Atividade Recente */}
-              <Card className="animate-fade-in animate-delay-1600 hover:shadow-lg transition-shadow duration-300">
+              <Card className="font-dosis animate-fade-in animate-delay-1600 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6">
                   <h2 className="text-xl font-semibold text-[#0c3729] flex items-center mb-6 animate-slide-up animate-delay-1700">
                     <Package className="w-5 h-5 mr-2" />
@@ -468,7 +468,7 @@ export default function PerfilPage() {
               </Card>
 
               {/* Interesse em Vender */}
-              <Card className="border-[#88a51d]/20 animate-fade-in animate-delay-2200 hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <Card className="font-dosis border-[#88a51d]/20 animate-fade-in animate-delay-2200 hover:shadow-lg transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6">
                   <div className="text-center">
                     <StoreIcon className="w-12 h-12 text-[#88a51d] mx-auto mb-4 animate-scale-in animate-delay-2300 hover:text-[#88a51d]/80 transition-colors duration-300" />

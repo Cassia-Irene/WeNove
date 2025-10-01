@@ -102,13 +102,13 @@ export default function Footer() {
               <ul className="space-y-1 sm:space-y-2 text-center">
                 
                 <li>
-                  <Link href="/cadastro-produto" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
+                  <Link href="/produtos" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
                     Quero comprar roupas
                   </Link>
                 </li>
                 
                 <li>
-                  <Link href="/cadastro-lojista" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
+                  <Link href="/criar-loja" className="text-[#ffffff] font-dosis text-sm sm:text-base hover:text-[#ffcc00] transition-colors">
                     Quero vender roupas
                   </Link>
                 </li>

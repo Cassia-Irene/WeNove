@@ -18,7 +18,7 @@ import {
 class ApiClient {
     private baseUrl: string;
 
-    constructor(baseUrl: string = 'http://localhost:8080/api') {
+    constructor(baseUrl: string = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api') {
         this.baseUrl = baseUrl;
     }
 
@@ -43,13 +43,23 @@ class ApiClient {
             const response = await fetch(url, config);
             const data = await response.json();
             
+            if (!response.ok && data.error === "Nenhum produto encontrado") {
+                return {success: true, data: [] as T, message: data.error };
+            }
+
             if (!response.ok) {
-                throw new Error(data.error || `HTTP error! status: ${response.status}`);
+                return {
+            success: false,
+            data: null as T,
+            message: data.error || `HTTP ${response.status}`
+        };
             }
             
             return data;
+
         } catch (error) {
-            throw new Error(`API request failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            console.error('Erro na requisição API:', error instanceof Error ? error.message : error);
+            throw new Error(`Erro de conexão com a API: ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
     }
 
@@ -99,7 +109,7 @@ class ApiClient {
         }
         const queryString = params.toString();
         const url = queryString ? `/products?${queryString}` : '/products';
-        return this.request<any[]>(url);
+        return this.request<ProductResponse[]>(url);
     }
 
     async searchProducts(name: string): Promise<ApiResponse<ProductResponse[]>> {
@@ -145,7 +155,7 @@ class ApiClient {
         return this.request<StoreResponse>(`/stores/${uuid}`);
     }
 
-    async getAllStores(filters?: StoreFilters): Promise<ApiResponse<any[]>> {
+    async getAllStores(filters?: StoreFilters): Promise<ApiResponse<StoreResponse[]>> {
         const params = new URLSearchParams();
         if (filters) {
             Object.entries(filters).forEach(([key, value]) => {
@@ -156,7 +166,7 @@ class ApiClient {
         }
         const queryString = params.toString();
         const url = queryString ? `/stores?${queryString}` : '/stores';
-        return this.request<any[]>(url);
+        return this.request<StoreResponse[]>(url);
     }
 
     async getStoresByOwner(ownerUuid: string): Promise<ApiResponse<StoreResponse>> {

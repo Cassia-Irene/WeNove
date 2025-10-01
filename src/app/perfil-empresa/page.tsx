@@ -326,7 +326,7 @@ export default function PerfilEmpresaPage() {
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Criada em:</span>
                     <span className="text-sm font-medium">
-                      "Há alguns minutos"
+                      &quot;Há alguns minutos&quot;
                     </span>
                   </div>
                   

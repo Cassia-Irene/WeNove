@@ -100,7 +100,6 @@ export default function Sobre_nos() {
             )}
 
         {/* Hero Section */}
-<<<<<<< HEAD
           <section className="relative w-full overflow-hidden flex flex-col items-center justify-start pt-0 pb-0">
             <div className="relative w-full max-w-full h-auto flex-shrink-0 xl:hidden">
               <Image
@@ -122,31 +121,6 @@ export default function Sobre_nos() {
               >Sobre Nós</h1>
             </div>
           </section>
-=======
-        <section className="relative w-full h-screen overflow-hidden flex items-center justify-center">
-
-          <div className="absolute inset-0 animate-fade-in">
-            <Image
-              src={"/img-sobre-nos.png"}
-              alt="Sobre Nós"
-              fill
-              className="object-contain sm:object-cover md:object-contain lg:object-cover object-center"
-            />
-              
-          </div>
-        
-        {/* Overlay escuro */}
-          <div className="absolute h-full inset-0 bg-black/40 animate-fade-in animate-delay-300" />
-
-        {/* Conteúdo central opcional */}
-          <div className="relative top-[10%] z-10 text-white text-center animate-slide-up animate-delay-500">
-            <h1 className="text-3xl md:text-5xl lg:text-7xl hover:scale-105 transition-transform duration-300"
-            style={{ fontFamily: "Futura, sans-serif" }}
-            >Sobre Nós</h1>
-          </div>
-
-        </section>
->>>>>>> e405f253dd83a9f4de07211a32629004ae6424f4
 
           <section className="hidden xl:block relative w-full h-screen overflow-hidden">
               <Image
@@ -192,13 +166,9 @@ export default function Sobre_nos() {
       </main>
 
       {/* Contact Section */}
-<<<<<<< HEAD
-      <section id="contato" className="px-4 md:px-8 py-4 lg:p-8 bg-[#FFF]">
-=======
       <section id="contato" className="px-4 md:px-8 py-12 md:py-16 bg-[#FFF] animate-fade-in animate-delay-1100">
->>>>>>> e405f253dd83a9f4de07211a32629004ae6424f4
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 mb-6 sm:mb-8 lg:mb-10 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
             
             {/* Contact Info */}
             <div className="text-center animate-slide-up animate-delay-1200">

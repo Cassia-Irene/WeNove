@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -11,7 +12,8 @@ import { useUser } from "@/contexts/UserContext";
 
 export default function WenoveLanding() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { user, isAuthenticated, logout } = useUser();
+  const { isAuthenticated, logout, isLoggingOut } = useUser();
+  const router = useRouter();
 
   return (
     
@@ -60,49 +62,34 @@ export default function WenoveLanding() {
         </div>
 
           {/* Botão - Oculto no celular, visível no tablet+ */}
-            <div className="hidden sm:block">
-              {isAuthenticated ? (
-                <div className="absolute top-4 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px] flex items-center gap-2">
-                  <Link
-                    href="/perfil"
-                    className="
-                    w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59]
-                    text-[#0C3729] font-dosis font-semibold
-                    rounded-full flex items-center justify-center
-                    shadow-[0_4px_4px_rgba(0,0,0,0.25)]
-                    before:absolute before:inset-0 before:shadow-inner before:shadow-[0_4px_4px_rgba(0,0,0,0.25)] before:rounded-full
-                    transition
-                  ">
-                    <User className="w-5 h-5" />
-                  </Link>
-                  <button
-                    onClick={logout}
-                    className="
-                    w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] bg-red-500 hover:bg-red-600
-                    text-white font-dosis font-semibold
-                    rounded-full flex items-center justify-center
-                    shadow-[0_4px_4px_rgba(0,0,0,0.25)]
-                    transition
-                  ">
-                    <LogOut className="w-5 h-5" />
-                  </button>
-                </div>
-              ) : (
+      <div className="hidden sm:flex absolute top-4 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px] gap-2 z-50">
+          {!isLoggingOut && (
+            isAuthenticated ? (
+              <>
                 <Link
-                  href="/login"
-                  className="
-                  absolute top-4 sm:top-6 lg:top-[30px] right-4 sm:right-6 lg:right-[30px]
-                  w-[120px] sm:w-[140px] lg:w-[150px] h-[40px] lg:h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59]
-                  text-[#0C3729] font-dosis font-semibold text-sm sm:text-lg lg:text-[20px]
-                  rounded-full flex items-center justify-center
-                  shadow-[0_4px_4px_rgba(0,0,0,0.25)]
-                  before:absolute before:inset-0 before:shadow-inner before:shadow-[0_4px_4px_rgba(0,0,0,0.25)] before:rounded-full
-                  transition
-                ">
-                  Sou Wenove
+                  href="/perfil"
+                  className="w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59] text-[#0C3729] font-dosis font-semibold rounded-full flex items-center justify-center shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition"
+                >
+                  <User className="w-5 h-5" />
                 </Link>
-              )}
-            </div>
+
+                <button
+                  onClick={logout}
+                  className="w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] bg-[#A66438] text-white font-dosis font-semibold rounded-full flex items-center justify-center shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition cursor-pointer"
+                >
+                  <LogOut className="w-5 h-5" />
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => { logout(); router.push('/login'); }}
+                className="w-[120px] sm:w-[140px] lg:w-[150px] h-[40px] lg:h-[50px] bg-[#FFCC00] hover:bg-[#FFDE59] text-[#0C3729] font-dosis font-semibold text-sm sm:text-lg lg:text-[20px] rounded-full flex items-center justify-center shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition"
+              >
+                Sou Wenove
+              </button>
+              )
+            )}
+          </div>
 
         </header>
 
