@@ -77,7 +77,7 @@ export default function Sobre_nos() {
                     </Link>
 
                     <Link
-                      href="/contato"
+                      href="/sobre-nos#contato"
                       className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >

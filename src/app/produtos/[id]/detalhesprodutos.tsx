@@ -94,7 +94,7 @@ export default function DetalhesProdutos({ product, store, relatedProducts }: Pr
               <Link href="/" className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>Início</Link>
               <Link href="/sobre-nos" className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>Sobre nós</Link>
               <Link href="/produtos" className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>Produtos</Link>
-              <Link href="/contato" className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>Contato</Link>
+              <Link href="/sobre-nos#contato" className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>Contato</Link>
             </nav>
           </div>
         </div>
