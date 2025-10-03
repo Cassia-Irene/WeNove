@@ -551,7 +551,7 @@ export default function CadastroLoja() {
               </Link>
 
               <Link
-                href="/sobre-nos#contato"
+                href="/sobre-nos" as="/sobre-nos#contato" scroll={false}
                 className="text-white text-lg font-dosis hover:text-[#FFCC00] transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
